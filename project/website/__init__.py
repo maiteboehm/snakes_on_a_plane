@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_admin import Admin, AdminIndexView
@@ -38,6 +38,7 @@ def create_app():
                     current_user.is_authenticated = False
                     return current_user.is_authenticated
         def inaccessible_callback(self, name, **kwargs):
+            flash('You need do be an Admin to access!!', category='error')
             return redirect(url_for('views.home'))
     class MyModelView(ModelView):
         column_exclude_list = ['password']
