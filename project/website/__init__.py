@@ -4,13 +4,9 @@ from flask_login import LoginManager, current_user
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from os import path
-from datetime import date
-
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
-
-
 
 def create_app():
     from .views import views
@@ -58,8 +54,6 @@ def create_database(app):
             db.create_all()
     return app
 
-def calculate_age(born):
-    today = date.today()
-    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
 
 

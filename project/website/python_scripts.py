@@ -1,5 +1,6 @@
 # document for definition of python function
 import os
+from datetime import date
 
 def write_seats_html(seat_list_new, directory, filename='seats.html', cwd=os.getcwd()):
 # function converts list of seat rows into html file to create seat buttons
@@ -17,3 +18,7 @@ def write_seats_html(seat_list_new, directory, filename='seats.html', cwd=os.get
                 file.write('</div>\n')
             file.write('{% endblock %} \n') # closing endblock, has to be at the end of html document
     return
+
+def calculate_age(born):
+    today = date.today()
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
