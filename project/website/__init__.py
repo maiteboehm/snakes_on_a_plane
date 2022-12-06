@@ -39,10 +39,11 @@ def create_app():
                     return current_user.is_authenticated
         def inaccessible_callback(self, name, **kwargs):
             return redirect(url_for('views.home'))
+    class MyModelView(ModelView):
         column_exclude_list = ['password']
 
-    admin = Admin(app, name='Admin', template_mode='bootstrap3')
-    admin.add_view(ModelView(User, db.session))
+    admin = Admin(app, name='Admin', template_mode='bootstrap3', index_view=MyAdminView())
+    admin.add_view(MyModelView(User, db.session))
     return app
 
 def create_database(app):
