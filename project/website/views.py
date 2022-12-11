@@ -13,7 +13,7 @@ def home():
 @views.route('/seats', methods=['GET', 'POST'])
 def seats():
     if request.method == 'GET':
-        with open(r'Input_Data/chartIn4.txt', 'r') as f:
+        with open(r'Input_Data/chartIn.txt', 'r') as f:
             seat_list = []
             seat_list_new = []
             for line in f:
