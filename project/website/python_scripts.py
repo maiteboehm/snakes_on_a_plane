@@ -15,7 +15,9 @@ def write_seats_html(seat_list_new, directory, filename='seats.html', cwd=os.get
                     file.write('<div class="container">\n')
                     for symbol in liste:
                         if symbol == liste[0]:
-                            file.write('\t<span type="button" class="badge badge-light col-1">' + symbol + '</span>\n')
+                            file.write('\t<span class="badge badge-light col-1">' + symbol + '</span>\n')
+                        elif symbol == 'X':
+                            file.write('\t<button type="button" class="btn btn-danger btn-lg"></button>\n')
                         else:
                             file.write('\t<button type="button" class="btn btn-primary btn-lg active" role="button" '
                                    'aria-pressed="true"></button>\n')
