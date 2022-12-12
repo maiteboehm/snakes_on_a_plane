@@ -1,6 +1,5 @@
 from flask import Flask, Blueprint, render_template, request
 from flask_login import login_required, current_user
-import os
 from .python_scripts import write_seats_html
 
 views = Blueprint('views', __name__)
