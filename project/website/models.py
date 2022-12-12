@@ -10,3 +10,9 @@ class User(db.Model, UserMixin):
     birth_date = db.Column(db.DateTime)
     role = db.Column(db.String(10))
 
+class Aircraft(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    seat_number = db.Column(db.String(5), unique=True)
+    seat_row = db.Column(db.String(5),)
+    seat_status = (db.String(10))
+    seat_type = (db.String(10))
