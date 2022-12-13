@@ -41,4 +41,20 @@ for Filename in os.listdir(ChartIn_Path):
 
             Filename_Input.append(Line_Liste)
     Filename_Dictionary.update({Filename:Filename_Input})
-print(Filename_Dictionary)
+#print(Filename_Dictionary)
+#print(Filename_Dictionary['chartIn2.txt'])
+for i in range(len(Filename_Liste)):
+    print(Filename_Liste[i])
+    print(Filename_Dictionary[Filename_Liste[i]])
+
+#for key in Filename_Dictionary:
+#    #print(Filename_Dictionary[key])
+#    for i in Filename_Dictionary[key]:
+#        #print(i)
+#        for Seat in i:
+#            #print(Seat)
+#            if str(Seat) == 'X':
+#                print('True',key)
+
+
+
