@@ -3,17 +3,21 @@ import string
 
 Filename_Liste = []
 #print(os.getcwd())
+Path = os.path.abspath(os.curdir)
+Project_Path = os.path.dirname(Path)
+#print('Path', Project_Path)
+ChartIn_Path = Project_Path +'\Input_Data\\'
 #print(os.listdir())
 Filename_Dictionary = {
 
 }
 
-for Filename in os.listdir(r'C:\Users\max_b\Desktop\Python for DataScientist\Input_Data_ASR_Project'):
+for Filename in os.listdir(ChartIn_Path):
     Filename_Input = []
 
     if Filename.endswith('.txt'):
         Filename_Liste.append(Filename)
-        Input = open(r'C:\Users\max_b\Desktop\Python for DataScientist\Input_Data_ASR_Project\\'+str(Filename),mode = 'r')
+        Input = open(ChartIn_Path+str(Filename),mode = 'r')
 
         for index,line in enumerate(Input):
             line.lstrip()
@@ -37,4 +41,20 @@ for Filename in os.listdir(r'C:\Users\max_b\Desktop\Python for DataScientist\Inp
 
             Filename_Input.append(Line_Liste)
     Filename_Dictionary.update({Filename:Filename_Input})
-print(Filename_Dictionary)
+#print(Filename_Dictionary)
+#print(Filename_Dictionary['chartIn2.txt'])
+for i in range(len(Filename_Liste)):
+    print(Filename_Liste[i])
+    print(Filename_Dictionary[Filename_Liste[i]])
+
+#for key in Filename_Dictionary:
+#    #print(Filename_Dictionary[key])
+#    for i in Filename_Dictionary[key]:
+#        #print(i)
+#        for Seat in i:
+#            #print(Seat)
+#            if str(Seat) == 'X':
+#                print('True',key)
+
+
+
