@@ -9,7 +9,12 @@ views = Blueprint('views', __name__)
 def home():
     return render_template("home.html", user=current_user)
 
-@views.route('/seats', methods=['GET', 'POST'])
+@views.route('/bookingsystem', methods=['GET','POST'])
+@login_required
+
+
+@views.route('/bookingsystem/seats', methods=['GET', 'POST'])
+@login_required
 def seats():
     if request.method == 'GET':
         with open(r'Input_Data/chartIn2.txt', 'r') as f:

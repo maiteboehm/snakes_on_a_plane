@@ -9,7 +9,6 @@ def write_seats_html(seat_list_new, directory, filename='seats.html', cwd=os.get
             file.write('{% extends "base.html" %} {% block title %}Seats{% endblock %} {% block content%} \n')
             file.write('<h1 align="center">Seats</h1> \n')
             for liste in seat_list_new:
-                print(liste)
                 if liste[0] == '':
                     continue
                 else:
