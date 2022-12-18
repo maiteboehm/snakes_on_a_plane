@@ -11,9 +11,11 @@ def home():
 
 @views.route('/bookingsystem', methods=['GET','POST'])
 @login_required
+def bookingsystem():
+     return render_template('bookingsystem.html', user=current_user)
 
 
-@views.route('/bookingsystem/seats', methods=['GET', 'POST'])
+@views.route('/seats', methods=['GET', 'POST'])
 @login_required
 def seats():
     if request.method == 'GET':
