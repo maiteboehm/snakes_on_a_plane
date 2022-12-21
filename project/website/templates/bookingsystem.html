@@ -2,14 +2,14 @@
 {% block content%}
 <form method="POST">
   <h1 align="center">Bookingsystem</h1>
-   <h2 align="center">Please choose your flight to continue your seat reservation. </h2>
+   <h3 align="center">Please choose your flight to continue your seat reservation. </h3>
   <div class="dropdown" align="center">
-    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Flights
+    <button class="btn btn-info dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Flights
     <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Flight1</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Flight2</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Flight3</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" value="chartIn.txt" href="/seats">Flight1</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" value="chartIn2.txt" href="/seats">Flight2</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" value="chartIn3.txt" href="/seats">Flight3</a></li>
     </ul>
   </div>
 {% endblock %}
