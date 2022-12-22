@@ -30,6 +30,7 @@ def Column_Name_Maker(Dictionary, key):
     return Column_Name_Liste
 #introduction of the database class
     class Flieger(db.Model):
+
         for key, value in Test_Dictionary.items():
             print(key,value)
             __tablename__ = str(key)
@@ -40,27 +41,32 @@ def Column_Name_Maker(Dictionary, key):
                 print(column)
 
                 if index == 0:
-                    Index = db.Column(db.Integer())
+                    Index = db.Column(db.Integer(1))
                 else:
+
                     for i in range(len(Column_Name_Liste)):
                         Column_Name_Liste[i] = db.Column(db.String(2))
-                        print(i)
+        # not sure how to utilize the __init__ function for the db_database.
+        def __init__(self, ):
+            self.Index = Index
+            #creates columns for the specific column names which are given by the name list.
+            for name in Column_Name_Liste:
+                exec(f'{name} = Column(String')
 
 Column_Name_Liste = Column_Name_Maker(Test_Dictionary,'Filename')
 print(Column_Name_Liste)
 
 
 
-#for key, item in Test_Dictionary.items():
-#    for index,column in enumerate(item):
-#        if index==0:
-#            print('True',column)
+for key, item in Test_Dictionary.items():
+    for index,column in enumerate(item):
+        if index==0:
+            print('True',column)
 
 
     #for seats in column_Lists:
     #    print(seats)
 #print(Column_Name)
-#Klasse der neuen Tabellen in der Parentclass Fliegertypen
 
 
 
