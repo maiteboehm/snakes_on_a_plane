@@ -6,7 +6,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column
-from CharReader import Filename_Liste
+#from CharReader import Filename_Liste
 DB_NAME = "Flieger.db"
 
 app = Flask(__name__)
@@ -19,30 +19,42 @@ Test_Dictionary = {
 'Filename':[[1,2],['A','A'],['B','B'],['C','C']],
 'Filename2':[[1,2],['A','A'],['B','B'],['C','C']]
 }
-#makes names for the columns of the subclasses:
-def Column_Name_Maker(Dictionary,key):
+#makes names for the columns of the tables:
+def Column_Name_Maker(Dictionary, key):
     Column_Name_Liste = []
-    for column_Lists in Dictionary[str(key)]:
-        print(column_Lists[0])
-        Column_Name = str(column_Lists[0])
-        Column_Name_Liste.append(Column_Name)
+    for index, column_Lists in enumerate(Dictionary[str(key)]):
+        #print(column_Lists[0])
+        if index>0:
+            Column_Name = str(column_Lists[0])
+            Column_Name_Liste.append(Column_Name)
     return Column_Name_Liste
-
+#introduction of the database class
     class Flieger(db.Model):
         for key, value in Test_Dictionary.items():
-            print(key)
+            print(key,value)
             __tablename__ = str(key)
             id = db.Column(db.Integer, primary_key = True)
-            for column in Test_Dictionary[str(key)]:
+            Column_Name_Liste = Column_Name_Maker(Test_Dictionary,key)
+
+            for index, column in enumerate(Test_Dictionary[str(key)]):
                 print(column)
 
-        #for column_name in Column_Name_Maker(Test_Dictionary,key):
-        #    setattr(Flieger, column_name, Column(String))
+                if index == 0:
+                    Index = db.Column(db.Integer())
+                else:
+                    for i in range(len(Column_Name_Liste)):
+                        Column_Name_Liste[i] = db.Column(db.String(2))
+                        print(i)
+
+Column_Name_Liste = Column_Name_Maker(Test_Dictionary,'Filename')
+print(Column_Name_Liste)
 
 
 
-for key, item in Test_Dictionary.items():
-    print(Column_Name_Maker(Test_Dictionary,key))
+#for key, item in Test_Dictionary.items():
+#    for index,column in enumerate(item):
+#        if index==0:
+#            print('True',column)
 
 
     #for seats in column_Lists:
