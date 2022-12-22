@@ -34,3 +34,16 @@ def write_seats_html(seat_list_new, directory, filename='seats.html', cwd=os.get
 def calculate_age(born):
     today = date.today()
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+def Column_Name_Maker(Dictionary, key):
+    Column_Name_Liste = []
+    for index, column_Lists in enumerate(Dictionary[str(key)]):
+
+        if index ==0:
+            Column_Name_Liste.append('Index')
+
+        if index>0:
+            Column_Name = str(column_Lists[0])
+            Column_Name_Liste.append(Column_Name)
+
+    return Column_Name_Liste
