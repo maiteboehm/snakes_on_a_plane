@@ -43,15 +43,28 @@ for Filename in os.listdir(ChartIn_Path):
     Filename_Dictionary.update({Filename:Filename_Input})
 
 Test_Dictionary = {
-    'Filename':[['0','A','B','C'],['1','A','B','C'],['2','A','B','C']],
+    'Filename':[['0','A','B','C'],['1','A','X','C'],['2','A','B','C']],
     'Filename1':[['0','A','B','C'],['1','A','B','C'],['2','A','B','C']]
 }
-for key in Test_Dictionary:
-    #print(Filename_Dictionary[key])
-    for i in Test_Dictionary[key]:
-        print(i)
-        for Seat in i:
-            print(Seat)
-            if str(Seat) == 'X':
-                print('True',key)
+def Dictionary_Resorter(Dictionary):
+
+    Resorted_Dictionary = {
+
+    }
+    for key in Dictionary:
+        Temp_Liste = []
+        #print(Filename_Dictionary[key])
+        for index,Row_List in enumerate(Dictionary[key]):
+            Temp_Liste2 = []
+            for ind,Seat in enumerate(Row_List):
+                if ind == 0:
+                    Temp_Liste2.append(Row_List[0])
+                else:
+                    Seat_ID = ''.join([Row_List[0],Seat])
+                    Temp_Liste2.append(Seat_ID)
+            Temp_Liste.append(Temp_Liste2)
+        Resorted_Dictionary.update({key:Temp_Liste})
+    return(Resorted_Dictionary)
+print(Dictionary_Resorter(Test_Dictionary))
+
 
