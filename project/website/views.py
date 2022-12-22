@@ -14,6 +14,11 @@ def home():
 def bookingsystem():
      return render_template('bookingsystem.html', user=current_user)
 
+@views.route('/help', methods=['GET','POST'])
+@login_required
+def help():
+     return render_template('help.html', user=current_user)
+
 
 @views.route('/seats', methods=['GET', 'POST'])
 @login_required
