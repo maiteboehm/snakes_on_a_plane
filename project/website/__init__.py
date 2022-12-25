@@ -11,6 +11,7 @@ DB_NAME = "database.db"
 def create_app():
     from .views import views
     from .auth import auth
+    from .admin_home import admins
     from .models import User
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
@@ -18,6 +19,7 @@ def create_app():
     app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(admins, url_prefix='/admin-area')
     db.init_app(app)
     create_database(app)
 
@@ -45,6 +47,7 @@ def create_app():
 
     admin = Admin(app, name='Admin', template_mode='bootstrap3', index_view=MyAdminView())
     admin.add_view(MyModelView(User, db.session))
+
     return app
 
 def create_database(app):

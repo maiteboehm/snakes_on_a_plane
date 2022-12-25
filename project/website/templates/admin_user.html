@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %}Admin{% endblock %}
+{% block content%}
+<h1 align="center">Admin Page</h1>
+<h2 align="center">Users</h2>
+<table class="table" id="users">
+    <thead>
+    <tr>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Date of Birth</th>
+    <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+    <td>{{user.first_name}}</td>
+    <td>{{user.last_name}} </td>
+    <td>{{user.birth_date}}</td>
+    <td>{{user.email}}</td>
+    </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+
+{% endblock %}
