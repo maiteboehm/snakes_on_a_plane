@@ -25,16 +25,20 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav">
+        <div class="navbar-nav" role="tablist">
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-          <a class="nav-item nav-link" id="seats" href="/seats">Seats</a>
           <a class="nav-item nav-link" id="bookingsystem" href="/bookingsystem">Bookingsystem</a>
           <a class="nav-item nav-link" id="help" href="/help">Help</a>
             {% if current_user.role == 'admin' %}
-            <a class="nav-item nav-link" id="admin" href="/admin">Admin</a>
-            <a class="nav-item nav-link" id="admin-area" href="/admin-area">Admin Area</a>
+            <a class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="admin-area">Admin Area</a>
+                <dif class="dropdown-menu">
+                  <a class="dropdown-item" id="admin-home" href="/admin-area">Home</a>
+                  <a class="dropdown-item" id="admin-user" href="/admin-area/user">User</a>
+                 </dif>
+            </a>
             {% endif %}
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
