@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Requierd meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -12,10 +14,11 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"/>
-
+    <!-- Tab Title -->
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button
         class="navbar-toggler"
@@ -47,7 +50,7 @@
         </div>
       </div>
     </nav>
-
+    <!-- Alert Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     {% for category, message in messages %}
@@ -66,8 +69,9 @@
       </button>
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
-
+    <!-- Main Block -->
     <div class="container">{% block content %} {% endblock %}</div>
+    <!-- JavaScript for Bootstrap-->
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

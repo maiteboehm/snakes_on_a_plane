@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import User
+from . import db
 
 admins = Blueprint('admins', __name__)
 
@@ -22,4 +23,23 @@ def admin_user():
     else:
         flash('You need do be an Admin to access!!', category='error')
         return redirect(url_for('views.home'))
+
+@admins.route('/user/update-user/<int:id>', methods=['GET','POST'])
+@login_required
+def update_user(id):
+    user_to_update = User.query.get(id)
+    if request.method == 'POST':
+        user_to_update.email = request.form['email']
+        user_to_update.first_name = request.form['first_name']
+        user_to_update.last_name = request.form.get['last_name']
+        user_to_update.role = request.form.get['role']
+        try:
+            db.session.commit()
+            flash('Account updated!', category='success')
+            return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
+        except:
+            flash('Account not updated!', category='error')
+            return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
+    else:
+        return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
 
