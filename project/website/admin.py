@@ -27,7 +27,7 @@ def admin_user():
 @admins.route('/user/update-user/<int:id>', methods=['GET','POST'])
 @login_required
 def update_user(id):
-    user_to_update = User.query.get(id)
+    user_to_update = User.query.get_or_404(id)
     if request.method == 'POST':
         user_to_update.email = request.form['email']
         user_to_update.first_name = request.form['first_name']
@@ -36,10 +36,10 @@ def update_user(id):
         try:
             db.session.commit()
             flash('Account updated!', category='success')
-            return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
+            return redirect(url_for('admins.admin_user'))
         except:
             flash('Account not updated!', category='error')
             return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
-    else:
-        return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
+
+    return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
 
