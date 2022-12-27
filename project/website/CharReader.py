@@ -44,7 +44,7 @@ for Filename in os.listdir(ChartIn_Path):
 
 Test_Dictionary = {
     'Filename':[['0','A','B','C'],['1','A','X','C'],['2','A','B','C']],
-    'Filename1':[['0','A','B','C'],['1','A','B','C'],['2','A','B','C']]
+    'Filename1':[['0','A','B','C'],['1','A','B','C'],['2','A','B','C'],['3','A','B','C'],['4','A','B','C'],['5','A','B','C'],['6','A','B','C'],['7','A','B','C'],['8','A','B','C'],['9','A','B','C'],['1','0','A','B','C'],['1','1','A','B','C'],['1','2','A','B','C']]
 }
 def Dictionary_Resorter(Dictionary):
 
@@ -56,15 +56,28 @@ def Dictionary_Resorter(Dictionary):
         #print(Filename_Dictionary[key])
         for index,Row_List in enumerate(Dictionary[key]):
             Temp_Liste2 = []
+            if index>=9:
+                Number = str(''.join(Row_List[0:2]))
+                #print(Number)
+            else:
+                Number = str(Row_List[0])
+                #print(Number)
+
             for ind,Seat in enumerate(Row_List):
-                if ind == 0:
-                    Temp_Liste2.append(Row_List[0])
+
+                if Seat.isdigit():
+                    continue
                 else:
-                    Seat_ID = ''.join([Row_List[0],Seat])
-                    Temp_Liste2.append(Seat_ID)
+                    #print(Number,ind,Seat)
+                    Seat_ID = ''.join([Number,Seat])
+                    Temp_Liste2.append(str(Seat_ID))
             Temp_Liste.append(Temp_Liste2)
         Resorted_Dictionary.update({key:Temp_Liste})
+
     return(Resorted_Dictionary)
-print(Dictionary_Resorter(Test_Dictionary))
+Resorted_Dictionary = Dictionary_Resorter(Filename_Dictionary)
+#print(Filename_Dictionary)
+print(Dictionary_Resorter(Filename_Dictionary))
+
 
 
