@@ -37,3 +37,6 @@ class Flieger(db.Model):
 db.create_all()
 
 
+
+
+
