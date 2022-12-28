@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
-from .models import User
+from .models import User, Seat
 from . import db
 
 admins = Blueprint('admins', __name__)
@@ -41,7 +41,7 @@ def update_user(id):
             flash('Account NOT updated!', category='error')
             return redirect('/admin-area/user')
     else:
-        return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
+        return render_template('admin_update_user.html', user= current_user, user_to_update=user_to_update)
 
 @admins.route('user/delete-user/<int:id>',methods=['POST', 'GET'])
 @login_required
@@ -55,6 +55,14 @@ def delete_user(id):
     except:
         flash('Account NOT deleted!', category='error')
         return redirect('/admin-area/user')
-
+@admins.route('/seats', methods=['GET', 'POST'])
+@login_required
+def admin_seats():
+    if current_user.role == 'admin':
+        seats = Seat.query.all()
+        return render_template('admin_seats.html', user=current_user, seats=seats)
+    else:
+        flash('You need do be an Admin to access!!', category='error')
+        return redirect(url_for('views.home'))
 
 
