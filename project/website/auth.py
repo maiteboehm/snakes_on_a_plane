@@ -48,8 +48,8 @@ def sign_up():
             login_user(new_user, remember=True)
             flash('Account created!', category='success')
             return redirect(url_for('views.home'))
-
     return render_template("sign_up.html", user=current_user)
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -65,7 +65,6 @@ def login():
                 flash('Incorrect password, please try again.', category='error')
         else:
             flash('Email does not exist.', category='error')
-
     return render_template("login.html", user=current_user)
 
 

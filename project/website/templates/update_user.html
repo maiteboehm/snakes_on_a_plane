@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Updating User{% endblock %}
 {% block content %}
-<form action="/update_user/ {{ user_to_update.id }}" method="POST">
+<form action="/admin-area/user/update-user/{{user_to_update.id}}" method="POST">
   <h3 align="center">Update User</h3>
   <div class="form-group">
     <label for="email">Email Address</label>
