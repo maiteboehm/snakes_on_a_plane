@@ -31,23 +31,6 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))
 
-    class MyAdminView(AdminIndexView):
-        def is_accessible(self):
-            if current_user.is_authenticated == True:
-                if current_user.role == 'admin':
-                    return current_user.is_authenticated
-                else:
-                    current_user.is_authenticated = False
-                    return current_user.is_authenticated
-        def inaccessible_callback(self, name, **kwargs):
-            flash('You need do be an Admin to access!!', category='error')
-            return redirect(url_for('views.home'))
-    class MyModelView(ModelView):
-        column_exclude_list = ['password']
-
-    admin = Admin(app, name='Admin', template_mode='bootstrap3', index_view=MyAdminView())
-    admin.add_view(MyModelView(User, db.session))
-
     return app
 
 def create_database(app):
