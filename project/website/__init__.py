@@ -1,8 +1,7 @@
-from flask import Flask, redirect, url_for, flash
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, current_user
-from flask_admin import Admin, AdminIndexView
-from flask_admin.contrib.sqla import ModelView
+from flask_login import LoginManager
+
 from os import path
 
 db = SQLAlchemy()
