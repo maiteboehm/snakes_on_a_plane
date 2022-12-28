@@ -12,7 +12,7 @@ def create_app():
     from .views import views
     from .auth import auth
     from .admin import admins
-    from .models import User
+    from .models import User, Seat
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'

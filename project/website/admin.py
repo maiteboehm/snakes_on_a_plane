@@ -14,7 +14,7 @@ def admin_home():
         flash('You need do be an Admin to access!!', category='error')
         return redirect(url_for('views.home'))
 
-@admins.route('/user', methods=['GET','POST'])
+@admins.route('/user', methods=['GET', 'POST'])
 @login_required
 def admin_user():
     if current_user.role == 'admin':
@@ -24,22 +24,37 @@ def admin_user():
         flash('You need do be an Admin to access!!', category='error')
         return redirect(url_for('views.home'))
 
-@admins.route('/user/update-user/<int:id>', methods=['GET','POST'])
+@admins.route('/user/update-user/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_user(id):
     user_to_update = User.query.get_or_404(id)
     if request.method == 'POST':
         user_to_update.email = request.form['email']
         user_to_update.first_name = request.form['first_name']
-        user_to_update.last_name = request.form.get['last_name']
-        user_to_update.role = request.form.get['role']
+        user_to_update.last_name = request.form['last_name']
+        user_to_update.role = request.form['role']
         try:
             db.session.commit()
             flash('Account updated!', category='success')
-            return redirect(url_for('admins.admin_user'))
+            return redirect('/admin-area/user')
         except:
-            flash('Account not updated!', category='error')
-            return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
+            flash('Account NOT updated!', category='error')
+            return redirect('/admin-area/user')
+    else:
+        return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
 
-    return render_template('update_user.html', user= current_user, user_to_update=user_to_update)
+@admins.route('user/delete-user/<int:id>',methods=['POST', 'GET'])
+@login_required
+def delete_user(id):
+    user_to_delete = User.query.get_or_404(id)
+    try:
+        db.session.delete(user_to_delete)
+        db.session.commit()
+        flash('Account deleted!', category='success')
+        return redirect('/admin-area/user')
+    except:
+        flash('Account NOT deleted!', category='error')
+        return redirect('/admin-area/user')
+
+
 

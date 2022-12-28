@@ -22,11 +22,11 @@
         <td>{{user.birth_date}}</td>
         <td>{{user.email}}</td>
         <td>{{user.role}}</td>
-        <td><a class="icon" href="{{url_for('admins.update_user', id=user.id)}}" title="Edit Record">
+        <td><a class="icon" href="{{url_for('admins.update_user', id=user.id)}}" >
             <span class="fa fa-pencil glyphicon glyphicon-pencil"></span></a></td>
-        <td><button type="button" class="close" onClick="">
+        <td><a class="icon" href="{{url_for('admins.delete_user', id=user.id)}}" >
             <span class="fa fa-trash glyphicon glyphicon-trash"></span>
-        </button></td>
+        </a></td>
         </tr>
         {% endfor %}
     </tbody>
