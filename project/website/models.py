@@ -17,7 +17,7 @@ class Seat(db.Model):
     flight = db.Column(db.String(10))
     seat_row = db.Column(db.String(5))
     seat_column = db.Column(db.String(5))
-    seat_status = (db.String(10))
-    seat_type = (db.String(10))
+    seat_status = db.Column(db.String(10))
+    seat_type = db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 

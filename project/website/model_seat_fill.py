@@ -22,10 +22,10 @@ def model_seat_filler(Dictionary):
                 for letter in str(column):
                     if letter == 'X':
                         letter = alphabet[Number_Seat]
-                        Seat_status.append(False)
+                        Seat_status.append('False')
 
                     elif letter in alphabet[0:13]:
-                        Seat_status.append(True)
+                        Seat_status.append('True')
 
                     if letter == 'A' or letter == 'B':
                         Seat_type.append('Fenster')
@@ -43,4 +43,5 @@ def model_seat_filler(Dictionary):
 
     db.session.commit()
     print(len(Flight),len(Seat_row_liste))
+    print(Seat_type,Seat_status)
     return (Flight,Seat_row_liste,Seat_column_liste,Seat_status,Seat_type)
