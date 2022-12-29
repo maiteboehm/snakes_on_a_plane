@@ -2,8 +2,7 @@ import os
 import string
 
 Path = os.path.abspath(os.curdir)
-Project_Path = os.path.dirname(Path)
-ChartIn_Path = Project_Path +'\Input_Data\\'
+ChartIn_Path = Path +'\Input_Data\\'
 
 def Dictionary_Resorter(Dictionary):
 
@@ -73,6 +72,7 @@ def Dictionary_Creater(Filepath):
         Flight_Number+=1
         Resorted_Dictionary = Dictionary_Resorter(Filename_Dictionary)
     return(Resorted_Dictionary)
+
 
 
 

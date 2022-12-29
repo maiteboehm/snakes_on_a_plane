@@ -33,7 +33,6 @@
           <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           <a class="nav-item nav-link" id="bookingsystem" href="/bookingsystem">Bookingsystem</a>
-          <a class="nav-item nav-link" id="help" href="/help">Help</a>
             {% if current_user.role == 'admin' %}
             <a class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="admin-area">Admin Area</a>
@@ -41,9 +40,11 @@
                   <a class="dropdown-item" id="admin-home" href="/admin-area">Home</a>
                   <a class="dropdown-item" id="admin-user" href="/admin-area/user">User</a>
                   <a class="dropdown-item" id="admin-seats" href="/admin-area/seats">Seats</a>
+                  <a class="dropdown-item" id="admin-flights" href="/admin-area/flights">Flights</a>
                  </dif>
             </a>
             {% endif %}
+          <a class="nav-item nav-link" id="help" href="/help">Help</a>
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
