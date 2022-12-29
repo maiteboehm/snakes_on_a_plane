@@ -5,6 +5,36 @@ Path = os.path.abspath(os.curdir)
 Project_Path = os.path.dirname(Path)
 ChartIn_Path = Project_Path +'\Input_Data\\'
 
+def Dictionary_Resorter(Dictionary):
+
+    Resorted_Dictionary = {
+
+    }
+    for key in Dictionary:
+        Temp_Liste = []
+        #print(Filename_Dictionary[key])
+        for index,Row_List in enumerate(Dictionary[key]):
+            Temp_Liste2 = []
+            if index>9:
+                Number = str(''.join(Row_List[0:2]))
+                print(Number)
+            else:
+                Number = str(Row_List[0])
+                #print(Number)
+
+            for ind,Seat in enumerate(Row_List):
+
+                if Seat.isdigit():
+                    continue
+                else:
+                    #print(Number,ind,Seat)
+                    Seat_ID = ''.join([Number,Seat])
+                    Temp_Liste2.append(str(Seat_ID))
+            Temp_Liste.append(Temp_Liste2)
+        Resorted_Dictionary.update({key:Temp_Liste})
+
+    return(Resorted_Dictionary)
+
 def Dictionary_Creater(Filepath):
     Filename_Liste = []
     Filename_Dictionary = {
@@ -40,39 +70,10 @@ def Dictionary_Creater(Filepath):
 
                 Filename_Input.append(Line_Liste)
         Filename_Dictionary.update({Filename:Filename_Input})
-    return(Filename_Dictionary)
-ChartIn_Dictionary = Dictionary_Creater(ChartIn_Path)
-
-def Dictionary_Resorter(Dictionary):
-
-    Resorted_Dictionary = {
-
-    }
-    for key in Dictionary:
-        Temp_Liste = []
-        #print(Filename_Dictionary[key])
-        for index,Row_List in enumerate(Dictionary[key]):
-            Temp_Liste2 = []
-            if index>9:
-                Number = str(''.join(Row_List[0:2]))
-                print(Number)
-            else:
-                Number = str(Row_List[0])
-                #print(Number)
-
-            for ind,Seat in enumerate(Row_List):
-
-                if Seat.isdigit():
-                    continue
-                else:
-                    #print(Number,ind,Seat)
-                    Seat_ID = ''.join([Number,Seat])
-                    Temp_Liste2.append(str(Seat_ID))
-            Temp_Liste.append(Temp_Liste2)
-        Resorted_Dictionary.update({key:Temp_Liste})
-
+        Resorted_Dictionary = Dictionary_Resorter(Filename_Dictionary)
     return(Resorted_Dictionary)
-Resorted_Dictionary = Dictionary_Resorter(ChartIn_Dictionary)
+
+Resorted_Dictionary = Dictionary_Creater(ChartIn_Path)
 print(Resorted_Dictionary)
 
 
