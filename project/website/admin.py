@@ -5,7 +5,6 @@ from . import db
 from .CharReader import Dictionary_Creater
 from .model_seat_fill import model_seat_filler
 import os
-import string
 
 admins = Blueprint('admins', __name__)
 

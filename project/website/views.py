@@ -20,6 +20,11 @@ def help():
      return render_template('help.html', user=current_user)
 
 
+#@views.route('/seats/<int:flights>', methods=['GET','POST'])
+#def seats(flights):
+#   flight_to_render = Seat.query.get_or_404(flight = flights)
+#   return render_template('seats.html', user = current_user, flight_to_render= flight_to_render)
+
 @views.route('/seats', methods=['GET', 'POST'])
 @login_required
 def seats():

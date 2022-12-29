@@ -42,6 +42,4 @@ def model_seat_filler(Dictionary):
         db.session.add(New_flight)
 
     db.session.commit()
-    print(len(Flight),len(Seat_row_liste))
-    print(Seat_type,Seat_status)
     return (Flight,Seat_row_liste,Seat_column_liste,Seat_status,Seat_type)
