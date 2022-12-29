@@ -1,51 +1,48 @@
 import os
 import string
 
-Filename_Liste = []
-#print(os.getcwd())
 Path = os.path.abspath(os.curdir)
 Project_Path = os.path.dirname(Path)
-#print('Path', Project_Path)
 ChartIn_Path = Project_Path +'\Input_Data\\'
-#print(os.listdir())
-Filename_Dictionary = {
 
-}
+def Dictionary_Creater(Filepath):
+    Filename_Liste = []
+    Filename_Dictionary = {
 
-for Filename in os.listdir(ChartIn_Path):
-    Filename_Input = []
+    }
 
-    if Filename.endswith('.txt'):
-        Filename_Liste.append(Filename)
-        Input = open(ChartIn_Path+str(Filename),mode = 'r')
+    for Filename in os.listdir(ChartIn_Path):
+        Filename_Input = []
 
-        for index,line in enumerate(Input):
-            line.lstrip()
-            Line_Liste = []
+        if Filename.endswith('.txt'):
+            Filename_Liste.append(Filename)
+            Input = open(ChartIn_Path+str(Filename),mode = 'r')
 
-            for letter in line:
+            for index,line in enumerate(Input):
+                line.lstrip()
+                Line_Liste = []
 
-                if letter !='\t' and letter !='\n':
-                    Line_Liste.append(letter)
+                for letter in line:
 
-            if Line_Liste[0]=='A':
-                Line_Liste.insert(0, '0')
-            if Line_Liste[0]=='1' and index == 0:
-                Letter_Liste = list(string.ascii_uppercase)
-                Tmp_Liste = [str(index)]
+                    if letter !='\t' and letter !='\n':
+                        Line_Liste.append(letter)
 
-                for i in range(len(Line_Liste)-1):
-                    Tmp_Liste.append(Letter_Liste[i])
+                if Line_Liste[0]=='A':
+                    Line_Liste.insert(0, '0')
+                if Line_Liste[0]=='1' and index == 0:
+                    Letter_Liste = list(string.ascii_uppercase)
+                    Tmp_Liste = [str(index)]
 
-                Filename_Input.append(Tmp_Liste)
+                    for i in range(len(Line_Liste)-1):
+                        Tmp_Liste.append(Letter_Liste[i])
 
-            Filename_Input.append(Line_Liste)
-    Filename_Dictionary.update({Filename:Filename_Input})
+                    Filename_Input.append(Tmp_Liste)
 
-Test_Dictionary = {
-    'Filename':[['0','A','B','C'],['1','A','X','C'],['2','A','B','C']],
-    'Filename1':[['0','A','B','C'],['1','A','B','C'],['2','A','B','C'],['3','A','B','C'],['4','A','B','C'],['5','A','B','C'],['6','A','B','C'],['7','A','B','C'],['8','A','B','C'],['9','A','B','C'],['1','0','A','B','C'],['1','1','A','B','C'],['1','2','A','B','C']]
-}
+                Filename_Input.append(Line_Liste)
+        Filename_Dictionary.update({Filename:Filename_Input})
+    return(Filename_Dictionary)
+ChartIn_Dictionary = Dictionary_Creater(ChartIn_Path)
+
 def Dictionary_Resorter(Dictionary):
 
     Resorted_Dictionary = {
@@ -75,8 +72,7 @@ def Dictionary_Resorter(Dictionary):
         Resorted_Dictionary.update({key:Temp_Liste})
 
     return(Resorted_Dictionary)
-Resorted_Dictionary = Dictionary_Resorter(Filename_Dictionary)
-#print(Filename_Dictionary)
+Resorted_Dictionary = Dictionary_Resorter(ChartIn_Dictionary)
 print(Resorted_Dictionary)
 
 
