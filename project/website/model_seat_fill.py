@@ -13,12 +13,12 @@ def model_seat_filler(Dictionary):
 
         for ind,Row in enumerate(value[1:]):
             print(Row,len(Row))
-            for Number_Seat,Seat in enumerate(Row):
+            for Number_Seat,column in enumerate(Row):
                 Seat_row_liste.append(ind + 1)
                 Flight.append(key)
-                Seat_liste.append(Seat)
+                Seat_liste.append(column)
 
-                for letter in str(Seat):
+                for letter in str(column):
                     if letter == 'X':
                         letter = alphabet[Number_Seat]
                         Seat_status.append(False)
@@ -36,11 +36,19 @@ def model_seat_filler(Dictionary):
                         Seat_type.append('Normal')
 
 
-    #for i in range(len(Flight)):
-        #New_flight = Seat(flight = Flight[i], seat_row = Seat_row_liste[i], seat_column = Seat_liste[i], seat_status = Seat_status[i], seat_type = Seat_type[i])
-        #db.session.add(New_flight)
+    for i in range(len(Flight)):
+        New_flight = Seat(flight = Flight[i], seat_row = Seat_row_liste[i], seat_column = Seat_liste[i], seat_status = Seat_status[i], seat_type = Seat_type[i])
+        db.session.add(New_flight)
 
-    #db.session.commit()
-    #print(len(Flight),len(Seat_row_liste))
+    db.session.commit()
+    print(len(Flight),len(Seat_row_liste))
     return (Flight,Seat_row_liste,Seat_liste,Seat_status,Seat_type)
 print(model_seat_filler(Resorted_Dictionary))
+
+#def Seat_Identifier(Row):
+Row = ['A','B','C','D']
+
+alphabet = list(string.ascii_uppercase)
+
+
+    #return(str(Seat_Name))
