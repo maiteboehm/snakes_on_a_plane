@@ -2,6 +2,10 @@ from flask import Flask, Blueprint, render_template, request, flash, redirect, u
 from flask_login import login_required, current_user
 from .models import User, Seat
 from . import db
+from .CharReader import Dictionary_Creater
+from .model_seat_fill import model_seat_filler
+import os
+import string
 
 admins = Blueprint('admins', __name__)
 
@@ -55,6 +59,23 @@ def delete_user(id):
     except:
         flash('Account NOT deleted!', category='error')
         return redirect('/admin-area/user')
+
+@admins.route('/flights', methods=['GET','POST'])
+@login_required
+def admin_flights():
+    if current_user.role == 'admin':
+        if request.method == 'POST':
+            Path = os.path.abspath(os.curdir)
+            ChartIn_Path = Path +'\Input_Data\\'
+            Flight_Dictionary = Dictionary_Creater(ChartIn_Path)
+            model_seat_filler(Flight_Dictionary)
+            return redirect('admin-area/seats')
+        else:
+            return render_template('admin_flights.html', user=current_user)
+    else:
+        flash('You need do be an Admin to access!!', category='error')
+        return redirect(url_for('views.home'))
+
 @admins.route('/seats', methods=['GET', 'POST'])
 @login_required
 def admin_seats():
