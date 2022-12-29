@@ -74,8 +74,6 @@ def Dictionary_Creater(Filepath):
         Resorted_Dictionary = Dictionary_Resorter(Filename_Dictionary)
     return(Resorted_Dictionary)
 
-Resorted_Dictionary = Dictionary_Creater(ChartIn_Path)
-print(Resorted_Dictionary)
 
 
 
