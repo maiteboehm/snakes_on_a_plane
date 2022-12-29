@@ -69,7 +69,7 @@ def admin_flights():
             ChartIn_Path = Path +'\Input_Data\\'
             Flight_Dictionary = Dictionary_Creater(ChartIn_Path)
             model_seat_filler(Flight_Dictionary)
-            return redirect('admin-area/seats')
+            return redirect('/admin-area/seats')
         else:
             return render_template('admin_flights.html', user=current_user)
     else:
