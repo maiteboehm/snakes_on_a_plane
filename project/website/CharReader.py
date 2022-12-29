@@ -40,10 +40,9 @@ def Dictionary_Creater(Filepath):
     Filename_Dictionary = {
 
     }
-
-    for Filename in os.listdir(ChartIn_Path):
+    Flight_Number = 1
+    for Filename in os.listdir(Filepath):
         Filename_Input = []
-
         if Filename.endswith('.txt'):
             Filename_Liste.append(Filename)
             Input = open(ChartIn_Path+str(Filename),mode = 'r')
@@ -69,7 +68,9 @@ def Dictionary_Creater(Filepath):
                     Filename_Input.append(Tmp_Liste)
 
                 Filename_Input.append(Line_Liste)
-        Filename_Dictionary.update({Filename:Filename_Input})
+        Filename_Dictionary.update({Flight_Number:Filename_Input})
+        print(Flight_Number)
+        Flight_Number+=1
         Resorted_Dictionary = Dictionary_Resorter(Filename_Dictionary)
     return(Resorted_Dictionary)
 

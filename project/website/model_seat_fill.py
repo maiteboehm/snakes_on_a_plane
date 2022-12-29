@@ -1,5 +1,5 @@
 import string
-from . import db
+from CharReader import Resorted_Dictionary
 
 def model_seat_filler(Dictionary):
     alphabet = list(string.ascii_uppercase)
@@ -8,15 +8,14 @@ def model_seat_filler(Dictionary):
     Seat_type = []
     Seat_liste = []
     Seat_status = []
-    index = 1
     #print(alphabet[4:13])
     for key, value in Dictionary.items():
 
         for ind,Row in enumerate(value[1:]):
-
+            print(Row,len(Row))
             for Number_Seat,Seat in enumerate(Row):
                 Seat_row_liste.append(ind + 1)
-                Flight.append(int(index))
+                Flight.append(key)
                 Seat_liste.append(Seat)
 
                 for letter in str(Seat):
@@ -36,11 +35,12 @@ def model_seat_filler(Dictionary):
                     elif letter in alphabet[4:13]:
                         Seat_type.append('Normal')
 
-        index+=1
 
-    for i in range(len(Flight)):
-        New_flight = Seat(flight = Flight[i], seat_row = Seat_row_liste[i], seat_column = Seat_liste[i], seat_status = Seat_status[i], seat_type = Seat_type[i])
-        db.session.add(New_flight)
+    #for i in range(len(Flight)):
+        #New_flight = Seat(flight = Flight[i], seat_row = Seat_row_liste[i], seat_column = Seat_liste[i], seat_status = Seat_status[i], seat_type = Seat_type[i])
+        #db.session.add(New_flight)
 
-    db.session.commit()
+    #db.session.commit()
+    #print(len(Flight),len(Seat_row_liste))
     return (Flight,Seat_row_liste,Seat_liste,Seat_status,Seat_type)
+print(model_seat_filler(Resorted_Dictionary))
