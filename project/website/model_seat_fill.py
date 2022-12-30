@@ -50,17 +50,14 @@ def model_seat_filler(Dictionary):
                         Replaced_Seat =''.join([str(ind+1),letter])
                         Seat_Column_Liste.append(Replaced_Seat)
                         Seat_Status.append('False')
-
                     elif letter in Alphabet[0:13]:
                         Seat_Status.append('True')
                         Seat_Column_Liste.append(''.join([str(ind+1), letter]))
 
                     if letter in Typen_Listen[0]:
                         Seat_Type.append('Gang')
-
                     elif letter in Typen_Listen[1]:
                         Seat_Type.append('Fenster')
-
                     elif letter in Typen_Listen[2]:
                         Seat_Type.append('Normal')
 
