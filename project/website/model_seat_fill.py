@@ -66,7 +66,8 @@ def model_seat_filler(Dictionary):
 
     for i in range(len(Flight)):
 
-        New_Flight = Seat(flight = Flight[i], seat_row = Seat_Row_Liste[i], seat_column = Seat_Column_Liste[i], seat_status = Seat_Status[i], seat_type = Seat_Type[i])
+        New_Flight = Seat(flight = Flight[i], seat_row = Seat_Row_Liste[i], seat_column = Seat_Column_Liste[i],
+                          seat_status = Seat_Status[i], seat_type = Seat_Type[i])
         db.session.add(New_Flight)
 
     db.session.commit()
