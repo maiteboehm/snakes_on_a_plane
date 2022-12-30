@@ -42,6 +42,8 @@ def model_seat_filler(Dictionary):
                     if letter == 'X':
                         letter = alphabet[Number_Seat]
                         Seat_status.append('False')
+                    elif letter in alphabet[0:13]:
+                        Seat_status.append('True')
 
                     if letter in Typen_Listen[0]:
                         Seat_type.append('Gang')
@@ -55,17 +57,8 @@ def model_seat_filler(Dictionary):
                         print(Typen_Listen[2],'Normal')
 
     for i in range(len(Flight)):
-        New_flight = Seat(flight = Flight[i], seat_row = Seat_row_liste[i], seat_column = Seat_liste[i], seat_status = Seat_status[i], seat_type = Seat_type[i])
-        db.session.add(New_flight)
-
-    for i in range(len(Flight)):
         New_flight = Seat(flight = Flight[i], seat_row = Seat_row_liste[i], seat_column = Seat_column_liste[i], seat_status = Seat_status[i], seat_type = Seat_type[i])
         db.session.add(New_flight)
 
     db.session.commit()
     return (Flight,Seat_row_liste,Seat_column_liste,Seat_status,Seat_type)
-
-    db.session.commit()
-    #print(len(Flight),len(Seat_row_liste),len(Seat_type))
-    #print(Seat_type)
-    return (Flight,Seat_row_liste,Seat_liste,Seat_status,Seat_type)
