@@ -46,7 +46,7 @@ def model_seat_filler(Dictionary):
                 for letter in str(column):
 
                     if letter == 'X':
-                        letter = Alphabet[Number_Seat]
+                        letter = Alphabet[number_seat]
                         Replaced_Seat =''.join([str(ind+1),letter])
                         Seat_Column_Liste.append(Replaced_Seat)
                         Seat_Status.append('False')
