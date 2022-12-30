@@ -62,10 +62,14 @@ def model_seat_filler(Dictionary):
                         Seat_Type.append('Normal')
 
     for i in range(len(Flight)):
-
-        New_Flight = Seat(flight = Flight[i], seat_row = Seat_Row_Liste[i], seat_column = Seat_Column_Liste[i],
-                          seat_status = Seat_Status[i], seat_type = Seat_Type[i])
-        db.session.add(New_Flight)
+        Seat_Unique = str(Flight[i])+str(Seat_Column_Liste[i])
+        Seat_Unique_Check = Seat.query.filter_by(seat_unique=Seat_Unique).first()
+        if Seat_Unique_Check:
+            continue
+        else:
+            New_Flight = Seat(flight = Flight[i], seat_row = Seat_Row_Liste[i], seat_column = Seat_Column_Liste[i],
+                              seat_status = Seat_Status[i], seat_type = Seat_Type[i], seat_unique = Seat_Unique)
+            db.session.add(New_Flight)
 
     db.session.commit()
     #print(len(Flight),len(Seat_Column_Liste),len(Seat_Row_Liste),len(Seat_Status))

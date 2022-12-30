@@ -19,5 +19,6 @@ class Seat(db.Model):
     seat_column = db.Column(db.String(5))
     seat_status = db.Column(db.String(10))
     seat_type = db.Column(db.String(10))
+    seat_unique = db.Column(db.String(20), unique=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
