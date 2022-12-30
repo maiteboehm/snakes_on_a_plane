@@ -13,16 +13,16 @@ def Dictionary_Resorter(Dictionary):
     for key in Dictionary:
         Temp_Liste = []
 
-        for index,Row_List in enumerate(Dictionary[key]):
+        for index,row_list in enumerate(Dictionary[key]):
             Temp_Liste2 = []
 
             if index>9:
-                Number = str(''.join(Row_List[0:2]))
+                Number = str(''.join(row_list[0:2]))
 
             else:
-                Number = str(Row_List[0])
+                Number = str(row_list[0])
 
-            for ind,seat in enumerate(Row_List):
+            for ind,seat in enumerate(row_list):
 
                 if seat.isdigit():
                     continue
@@ -45,12 +45,12 @@ def Dictionary_Creater(Filepath):
     }
     Flight_Number = 1
 
-    for Filename in os.listdir(Filepath):
+    for filename in os.listdir(Filepath):
         Filename_Input = []
 
-        if Filename.endswith('.txt'):
-            Filename_Liste.append(Filename)
-            Input = open(ChartIn_Path+str(Filename),mode = 'r')
+        if filename.endswith('.txt'):
+            Filename_Liste.append(filename)
+            Input = open(ChartIn_Path+str(filename),mode = 'r')
 
             for index,line in enumerate(Input):
                 line.lstrip()
@@ -82,6 +82,7 @@ def Dictionary_Creater(Filepath):
     return(Resorted_Dictionary)
 
 #Resorted_Dictionary = Dictionary_Creater(ChartIn_Path)
+#print(Resorted_Dictionary)
 
 
 
