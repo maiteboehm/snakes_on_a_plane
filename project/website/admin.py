@@ -63,14 +63,11 @@ def delete_user(id):
 @login_required
 def admin_flights():
     if current_user.role == 'admin':
-        if request.method == 'POST':
-            Path = os.path.abspath(os.curdir)
-            ChartIn_Path = Path +'\Input_Data\\'
-            Flight_Dictionary = Dictionary_Creater(ChartIn_Path)
-            model_seat_filler(Flight_Dictionary)
-            return redirect('/admin-area/seats')
-        else:
-            return render_template('admin_flights.html', user=current_user)
+        Path = os.path.abspath(os.curdir)
+        ChartIn_Path = Path +'\Input_Data\\'
+        Flight_Dictionary = Dictionary_Creater(ChartIn_Path)
+        model_seat_filler(Flight_Dictionary)
+        return redirect('/admin-area/seats')
     else:
         flash('You need do be an Admin to access!!', category='error')
         return redirect(url_for('views.home'))

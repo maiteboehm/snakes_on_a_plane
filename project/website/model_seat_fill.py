@@ -5,9 +5,9 @@ from . import db
 def Seat_Identifier(Reihe):
 
     if len(Reihe)==10:
-        Gang_Liste = ['C','D','F','G']
+        Gang_Liste = ['C','D','G','H']
         Fenster_Liste = ['A','J']
-        Normal_Liste = ['B','E','H','I']
+        Normal_Liste = ['B','E','F','I']
 
     elif len(Reihe)==6:
         Gang_Liste = ['C','D']
@@ -41,7 +41,7 @@ def model_seat_filler(Dictionary):
                 for letter in str(column):
 
                     if letter == 'X':
-                        letter = alphabet([Number_Seat])
+                        letter = alphabet[Number_Seat]
                         Replaced_Seat =''.join([str(ind+1),letter])
                         Seat_column_liste.append(Replaced_Seat)
                         Seat_status.append('False')
