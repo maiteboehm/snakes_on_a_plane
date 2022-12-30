@@ -9,6 +9,11 @@ def Seat_Identifier(Reihe):
         Fenster_Liste = ['A','J']
         Normal_Liste = ['B','E','F','I']
 
+    elif len(Reihe)==8:
+        Gang_Liste = ['C', 'D', 'E', 'F']
+        Fenster_Liste = ['A', 'H']
+        Normal_Liste = ['B', 'G']
+
     elif len(Reihe)==6:
         Gang_Liste = ['C','D']
         Fenster_Liste = ['A','F']

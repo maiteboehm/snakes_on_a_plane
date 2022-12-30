@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Made function with path as variable">
+    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Made all variables with capital letters and for loop arguments small letters">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/website/model_seat_fill.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/model_seat_fill.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/project/website/model_seat_fill.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -241,7 +243,28 @@
       <option name="project" value="LOCAL" />
       <updated>1672437115643</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Made function with path as variable">
+      <created>1672438541800</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672438541800</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Made function with path as variable">
+      <created>1672438642825</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1672438642825</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Made all variables with capital letters and for loop arguments small letters">
+      <created>1672439361581</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1672439361581</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -259,6 +282,7 @@
     <MESSAGE value="Fixed Bug" />
     <MESSAGE value="Started Filling Database with Seat class" />
     <MESSAGE value="Made function with path as variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made function with path as variable" />
+    <MESSAGE value="Made all variables with capital letters and for loop arguments small letters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made all variables with capital letters and for loop arguments small letters" />
   </component>
 </project>
