@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Made function with path as variable">
-      <change afterPath="$PROJECT_DIR$/project/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/website/Statistics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/website/model_seat_fill.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/model_seat_fill.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -235,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672318575330</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Made function with path as variable">
+      <created>1672437115643</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672437115643</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

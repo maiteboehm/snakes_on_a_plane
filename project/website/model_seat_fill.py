@@ -1,7 +1,7 @@
 import string
 from .models import Seat
 from . import db
-
+#from CharReader import Resorted_Dictionary
 def Seat_Identifier(Reihe):
 
     if len(Reihe)==10:
@@ -37,16 +37,18 @@ def model_seat_filler(Dictionary):
             for Number_Seat,column in enumerate(Row):
                 Seat_row_liste.append(ind + 1)
                 Flight.append(key)
-                Seat_column_liste.append(column)
 
                 for letter in str(column):
 
                     if letter == 'X':
-                        letter = alphabet[Number_Seat]
+                        letter = alphabet[Number_Seat])
+                        Replaced_Seat =''.join([str(ind+1),letter])
+                        Seat_column_liste.append(Replaced_Seat)
                         Seat_status.append('False')
 
                     elif letter in alphabet[0:13]:
                         Seat_status.append('True')
+                        Seat_column_liste.append(''.join([str(ind+1), letter]))
 
                     if letter in Typen_Listen[0]:
                         Seat_type.append('Gang')
@@ -63,5 +65,6 @@ def model_seat_filler(Dictionary):
         db.session.add(New_flight)
 
     db.session.commit()
-
+    #print(len(Flight),len(Seat_column_liste),len(Seat_row_liste),len(Seat_status))
     return (Flight,Seat_row_liste,Seat_column_liste,Seat_status,Seat_type)
+#print(model_seat_filler(Resorted_Dictionary))

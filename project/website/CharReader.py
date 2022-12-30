@@ -22,14 +22,14 @@ def Dictionary_Resorter(Dictionary):
             else:
                 Number = str(Row_List[0])
 
-            for ind,Seat in enumerate(Row_List):
+            for ind,seat in enumerate(Row_List):
 
-                if Seat.isdigit():
+                if seat.isdigit():
                     continue
 
                 else:
 
-                    Seat_ID = ''.join([Number,Seat])
+                    Seat_ID = ''.join([Number,seat])
                     Temp_Liste2.append(str(Seat_ID))
 
             Temp_Liste.append(Temp_Liste2)
