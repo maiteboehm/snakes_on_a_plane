@@ -22,49 +22,49 @@ def Seat_Identifier(Reihe):
     return(Gang_Liste,Fenster_Liste,Normal_Liste)
 
 def model_seat_filler(Dictionary):
-    alphabet = list(string.ascii_uppercase)
+    Alphabet = list(string.ascii_uppercase)
     Flight = []
-    Seat_row_liste = []
-    Seat_type = []
-    Seat_column_liste = []
-    Seat_status = []
+    Seat_Row_Liste = []
+    Seat_Type = []
+    Seat_Column_Liste = []
+    Seat_Status = []
 
     for key, value in Dictionary.items():
 
-        for ind,Row in enumerate(value[1:]):
-            Typen_Listen = Seat_Identifier(Row)
+        for ind,row in enumerate(value[1:]):
+            Typen_Listen = Seat_Identifier(row)
 
-            for Number_Seat,column in enumerate(Row):
-                Seat_row_liste.append(ind + 1)
+            for number_seat,column in enumerate(row):
+                Seat_Row_Liste.append(ind + 1)
                 Flight.append(key)
 
                 for letter in str(column):
 
                     if letter == 'X':
-                        letter = alphabet([Number_Seat])
+                        letter = Alphabet[number_seat]
                         Replaced_Seat =''.join([str(ind+1),letter])
-                        Seat_column_liste.append(Replaced_Seat)
-                        Seat_status.append('False')
+                        Seat_Column_Liste.append(Replaced_Seat)
+                        Seat_Status.append('False')
 
-                    elif letter in alphabet[0:13]:
-                        Seat_status.append('True')
-                        Seat_column_liste.append(''.join([str(ind+1), letter]))
+                    elif letter in Alphabet[0:13]:
+                        Seat_Status.append('True')
+                        Seat_Column_Liste.append(''.join([str(ind+1), letter]))
 
                     if letter in Typen_Listen[0]:
-                        Seat_type.append('Gang')
+                        Seat_Type.append('Gang')
 
                     elif letter in Typen_Listen[1]:
-                        Seat_type.append('Fenster')
+                        Seat_Type.append('Fenster')
 
                     elif letter in Typen_Listen[2]:
-                        Seat_type.append('Normal')
+                        Seat_Type.append('Normal')
 
     for i in range(len(Flight)):
 
-        New_flight = Seat(flight = Flight[i], seat_row = Seat_row_liste[i], seat_column = Seat_column_liste[i], seat_status = Seat_status[i], seat_type = Seat_type[i])
-        db.session.add(New_flight)
+        New_Flight = Seat(flight = Flight[i], seat_row = Seat_Row_Liste[i], seat_column = Seat_Column_Liste[i], seat_status = Seat_Status[i], seat_type = Seat_Type[i])
+        db.session.add(New_Flight)
 
     db.session.commit()
-    #print(len(Flight),len(Seat_column_liste),len(Seat_row_liste),len(Seat_status))
-    return (Flight,Seat_row_liste,Seat_column_liste,Seat_status,Seat_type)
+    #print(len(Flight),len(Seat_Column_Liste),len(Seat_Row_Liste),len(Seat_Status))
+    return (Flight,Seat_Row_Liste,Seat_Column_Liste,Seat_Status,Seat_Type)
 #print(model_seat_filler(Resorted_Dictionary))
