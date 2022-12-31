@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, render_template, request
 from flask_login import login_required, current_user
 from .python_scripts import write_seats_html
+from .models import Seat
 
 views = Blueprint('views', __name__)
 
@@ -12,18 +13,19 @@ def home():
 @views.route('/bookingsystem', methods=['GET','POST'])
 @login_required
 def bookingsystem():
-     return render_template('bookingsystem.html', user=current_user)
+    Flights = Seat.query.filter_by(seat_column='1A').all()
+    return render_template('bookingsystem.html', user=current_user, flights= Flights)
 
 @views.route('/help', methods=['GET','POST'])
 @login_required
 def help():
-     return render_template('help.html', user=current_user)
+    return render_template('help.html', user=current_user)
 
 
-#@views.route('/seats/<int:flights>', methods=['GET','POST'])
-#def seats(flights):
-#   flight_to_render = Seat.query.get_or_404(flight = flights)
-#   return render_template('seats.html', user = current_user, flight_to_render= flight_to_render)
+@views.route('/flight/<int:flights>', methods=['GET','POST'])
+def flight(flights):
+   flight_to_render = Seat.query.filter_by(flight = flights)
+   return render_template('seats.html', user = current_user, flight_to_render= flight_to_render)
 
 @views.route('/seats', methods=['GET', 'POST'])
 @login_required
