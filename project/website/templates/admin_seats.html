@@ -3,7 +3,7 @@
 <h1 align="center">Admin Page</h1>
 <h2 align="center">Seats</h2>
 <form method="POST" align="center">
-<a class="btn btn-primary link" href="/admin-area/flights" >Update Seats</a>
+<a class="btn btn-primary link" href="/admin-area/update-flights" >Update Seats</a>
 </form>
 <br>
 <table class="table table-striped" id="users">
@@ -28,6 +28,8 @@
         <td>{{seat.seat_status}}</td>
         <td>{{seat.seat_type}}</td>
         <td>{{seat.user_id}}</td>
+        <td><a class="icon" href="{{url_for('admins.update_seat', id=seat.id)}}" >
+            <span class="fa fa-pencil glyphicon glyphicon-pencil"></span></a></td>
         </tr>
         {% endfor %}
     </tbody>

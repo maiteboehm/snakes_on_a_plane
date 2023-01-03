@@ -47,12 +47,12 @@ def model_seat_filler(Dictionary):
 
                     if letter == 'X':
                         letter = Alphabet[number_seat]
-                        Replaced_Seat =''.join([str(ind+1),letter])
+                        Replaced_Seat =''.join([letter])
                         Seat_Column_Liste.append(Replaced_Seat)
                         Seat_Status.append('False')
                     elif letter in Alphabet[0:13]:
                         Seat_Status.append('True')
-                        Seat_Column_Liste.append(''.join([str(ind+1), letter]))
+                        Seat_Column_Liste.append(''.join([letter]))
 
                     if letter in Typen_Listen[0]:
                         Seat_Type.append('Gang')
@@ -62,7 +62,7 @@ def model_seat_filler(Dictionary):
                         Seat_Type.append('Normal')
 
     for i in range(len(Flight)):
-        Seat_Unique = str(Flight[i])+str(Seat_Column_Liste[i])
+        Seat_Unique = str(Flight[i])+'_'+str(Seat_Row_Liste[i])+'_'+str(Seat_Column_Liste[i])
         Seat_Unique_Check = Seat.query.filter_by(seat_unique=Seat_Unique).first()
         if Seat_Unique_Check:
             continue
