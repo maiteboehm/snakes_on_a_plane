@@ -61,6 +61,11 @@ def cancel_seat(flights, id):
         flash('An error occured while canceling your seat', category='error')
     return redirect('/flight/'+str(flights))
 
+@views.route('/flight/<int:flights>/modal/<int:id>')
+@login_required
+def modal(flights, id):
+    return render_template('modal.html', user = current_user)
+
 
 #@views.route('/seats', methods=['GET', 'POST'])
 #@login_required

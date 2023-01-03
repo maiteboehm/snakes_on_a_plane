@@ -50,6 +50,8 @@
         </div>
       </div>
     </nav>
+    <!-- Block for modal -->
+    {% block modal %}{% endblock %}
     <!-- Alert Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
