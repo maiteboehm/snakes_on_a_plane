@@ -13,7 +13,7 @@ def home():
 @views.route('/bookingsystem', methods=['GET','POST'])
 @login_required
 def bookingsystem():
-    Flights = Seat.query.filter_by(seat_column='1A').all()
+    Flights = Seat.query.filter_by(seat_row='1', seat_column='A').all()
     return render_template('bookingsystem.html', user=current_user, flights= Flights)
 
 @views.route('/help', methods=['GET','POST'])
