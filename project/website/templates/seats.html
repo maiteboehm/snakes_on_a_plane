@@ -2,9 +2,18 @@
 {% block content%}
 <form method="POST">
 <h1 align="center">Seats</h1>
-	<div class="container">
-	{% for seat in row %}
-		<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">{{seat.seat_column}}</button>
+	{% for element in list_of_rows %}
+	<div class="container" align="center">
+		{% for seat in element %}
+		{% if seat.seat_status == 'True' %}
+		<a type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
+		{% elif seat.user_id == current_user.id%}
+		<a type="button" class="btn btn-success btn-lg active" role="button" aria-pressed="true" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
+		{% elif seat.seat_status == 'False' %}
+		<a type="button" class="btn btn-danger btn-lg active" role="button" aria-pressed="true" >{{seat.seat_column}}</a>
+		{% endif %}
 		{% endfor %}
-	</div>
+		</div>
+		{% endfor %}
+
 {% endblock %} 
