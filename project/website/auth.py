@@ -72,7 +72,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('Logged out successfully!', category='success')
+    flash('Logged out successfully! Thank you for traveling with Snakes on a Plane!!', category='success')
     return redirect(url_for('auth.login'))
 
 
