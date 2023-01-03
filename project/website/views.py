@@ -24,28 +24,33 @@ def help():
 
 @views.route('/flight/<int:flights>', methods=['GET','POST'])
 def flight(flights):
-   flight_to_render = Seat.query.filter_by(flight = flights)
-   return render_template('seats.html', user = current_user, flight_to_render= flight_to_render)
+   seat_to_render = Seat.query.filter_by(flight = flights)
+   list_of_rows = []
+   for seat in seat_to_render:
+      pass
+   row_one = Seat.query.filter_by(flight = flights, seat_row = 1)
+   return render_template('seats.html', user = current_user, seat_to_render= seat_to_render, row = row_one)
 
-@views.route('/seats', methods=['GET', 'POST'])
-@login_required
-def seats():
-    if request.method == 'GET':
-        with open(r'Input_Data/chartIn2.txt', 'r') as f:
-            seat_list = []
-            seat_list_new = []
-            for line in f:
-                data = line.split('\t')
-                seat_list.append(data)
-                for row in seat_list:
-                    row_new = []
-                    for seat in row:
-                        seat_new = seat.strip()
-                        row_new.append(seat_new)
-                seat_list_new.append(row_new)
-        write_seats_html(seat_list_new, 'website/templates')
 
-    return render_template("seats.html", user=current_user)
+#@views.route('/seats', methods=['GET', 'POST'])
+#@login_required
+#def seats():
+ #   if request.method == 'GET':
+  #      with open(r'Input_Data/chartIn2.txt', 'r') as f:
+   #         seat_list = []
+    #        seat_list_new = []
+     #       for line in f:
+      #          data = line.split('\t')
+       #         seat_list.append(data)
+        #        for row in seat_list:
+         #           row_new = []
+          #          for seat in row:
+           #             seat_new = seat.strip()
+           #             row_new.append(seat_new)
+            #    seat_list_new.append(row_new)
+        #write_seats_html(seat_list_new, 'website/templates')
+
+    #return render_template("seats.html", user=current_user)
 
 
 
