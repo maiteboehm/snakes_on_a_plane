@@ -3,32 +3,24 @@
 {% block content%}
 <form method="POST">
 <h1 align="center">Seats</h1>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 	{% for element in list_of_rows %}
 	<div class="container" align="center">
 		{% for seat in element %}
+		<!-- checking for aisle seat -->
+		{% if seat.seat_type == 'Aisle_Left' %}
 		{% if seat.seat_status == 'True' %}
+		<a type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
+		<button type="button" class="btn btn-outline-light" disabled></button>
+		{% elif seat.user_id == current_user.id%}
+		<a type="button" class="btn btn-success btn-lg active" role="button" aria-pressed="true" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
+		<button type="button" class="btn btn-outline-light" disabled></button>
+		{% elif seat.seat_status == 'False' %}
+		<a type="button" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">{{seat.seat_column}}</a>
+		<button type="button" class="btn btn-outline-light" disabled></button>
+		{% endif %}
+		<!-- end of aisle seat section -->
+		{% elif seat.seat_status == 'True' %}
 		<a type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
 		{% elif seat.user_id == current_user.id%}
 		<a type="button" class="btn btn-success btn-lg active" role="button" aria-pressed="true" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
@@ -39,3 +31,4 @@
 		</div>
 		{% endfor %}
 {% endblock %}
+</form>
