@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from .models import User, Seat
 from . import db
 from .CharReader import Dictionary_Creater
-from .model_seat_fill import model_seat_filler
+from .CharReader import model_seat_filler
 import os
 
 admins = Blueprint('admins', __name__)
