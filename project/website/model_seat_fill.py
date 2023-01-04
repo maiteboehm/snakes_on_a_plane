@@ -5,23 +5,27 @@ from . import db
 def Seat_Identifier(Reihe):
 
     if len(Reihe)==10:
-        Gang_Liste = ['C','D','G','H']
+        Gang_Liste_Links = ['C','G']
+        Gang_Liste_Rechts = ['D','H']
         Fenster_Liste = ['A','J']
         Normal_Liste = ['B','E','F','I']
 
     elif len(Reihe)==8:
-        Gang_Liste = ['C', 'D', 'E', 'F']
+        Gang_Liste_Links = ['C', 'E']
+        Gang_Liste_Rechts = ['D','F']
         Fenster_Liste = ['A', 'H']
         Normal_Liste = ['B', 'G']
 
     elif len(Reihe)==6:
-        Gang_Liste = ['C','D']
+        Gang_Liste_Links = ['C']
+        Gang_Liste_Rechts = ['D']
         Fenster_Liste = ['A','F']
         Normal_Liste = ['B', 'E']
 
     elif len(Reihe)==4:
-        Gang_Liste = ['A','D']
-        Fenster_Liste = ['B','C']
+        Gang_Liste_Links = ['B']
+        Gang_Liste_Rechts = ['C']
+        Fenster_Liste = ['A','D']
         Normal_Liste = []
 
     return(Gang_Liste,Fenster_Liste,Normal_Liste)
@@ -55,10 +59,12 @@ def model_seat_filler(Dictionary):
                         Seat_Column_Liste.append(''.join([letter]))
 
                     if letter in Typen_Listen[0]:
-                        Seat_Type.append('Gang')
+                        Seat_Type.append('Aisle_Left')
                     elif letter in Typen_Listen[1]:
-                        Seat_Type.append('Fenster')
+                        Seat_Type.append('Aisle_Right')
                     elif letter in Typen_Listen[2]:
+                        Seat_Type.append('Window')
+                    elif letter in Typen_Listen[3]:
                         Seat_Type.append('Normal')
 
     for i in range(len(Flight)):
