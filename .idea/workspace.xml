@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Made all variables with capital letters and for loop arguments small letters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/Input_Data/chartIn5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project/Input_Data/chartIn5.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/website/Statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/Statistics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/website/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/admin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +23,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/project/website/model_seat_fill.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,7 +47,7 @@
       <recent name="C:\Users\max_b\Documents\GitHub\snakes_on_a_plane\project\website" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.CharReader">
     <configuration name="CharReader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="snakes_on_a_plane" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,10 +155,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.CharReader" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.Statistics" />
         <item itemvalue="Python.model_seat_fill" />
-        <item itemvalue="Python.CharReader" />
         <item itemvalue="Python.FlightDatabase" />
       </list>
     </recent_temporary>
@@ -302,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672824997295</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Made all variables with capital letters and for loop arguments small letters">
+      <created>1672827340622</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672827340622</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
