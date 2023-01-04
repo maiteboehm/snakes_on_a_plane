@@ -6,6 +6,7 @@ from os import path
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
+
 # Creates the webserver and the database
 def create_app():
     from .views import views
@@ -25,10 +26,12 @@ def create_app():
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
+
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
     return app
+
 
 # Creates the database which contains the classes User and Seats
 def create_database(app):
@@ -39,7 +42,3 @@ def create_database(app):
         with app.app_context():
             db.create_all()
     return app
-
-
-
-
