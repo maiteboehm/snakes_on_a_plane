@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %}Bookingsystem{% endblock %}
 {% block content%}
 <form method="POST">
-  <h1 align="center">Bookingsystem</h1>
+  <h1 align="center">Booking System</h1>
    <h3 align="center">Please choose your flight to continue your seat reservation. </h3>
   <br>
   <div class="dropdown" align="center">
@@ -13,4 +13,10 @@
       {% endfor %}
     </ul>
   </div>
+  <div>
+  <p align="center">Need help with your seat reservation? Click
+	<a href="/help" class="link-primary">here </a>
+	to get to our help page. </p>
+  </div>
 {% endblock %}
+</form>
