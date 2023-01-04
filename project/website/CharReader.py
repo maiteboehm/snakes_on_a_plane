@@ -9,6 +9,8 @@ ChartIn_Path = Path + r'\Input_Data\\'
 
 """ Creates dictionary from Textfiles in filepath with the function argument being the filepath of files. 
 Returns dictionary with Flightnumber as key and list of rows of the specific flight(list of of lists) as value. """
+
+
 def dictionary_creater(filepath):
     filename_liste = []
 #    Exception_Liste = []
@@ -43,10 +45,12 @@ def dictionary_creater(filepath):
         resorted_dictionary = filename_dictionary
     return resorted_dictionary
 
+
 """Seat_Identifier serves as Function to define the different types of seats that are present in the Flight.
 The Function takes a row as argument and returns lists that contain the seats in capital letters according to their 
  type."""
 def seat_identifier(reihe):
+
 
     if len(reihe) == 10:
         aisle_list_left = ['C', 'G']
@@ -74,9 +78,12 @@ def seat_identifier(reihe):
 
     return aisle_list_left, aisle_liste_right, window_list, normal_list
 
+
 """Function takes the Dictionary as argument and fills the class seat of the Database which is initialized in __init__
  with values from the Dictionary. Returns the Lists which are filled in the Database."""
 def model_seat_filler(Dictionary):
+
+
     alphabet = list(string.ascii_uppercase)
     flight_list = []
     seat_row_list = []
