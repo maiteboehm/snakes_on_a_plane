@@ -3,6 +3,7 @@
 {% block content%}
 <form method="POST">
 <h1 align="center">Seats</h1>
+	<h3 align="center">Please choose the seat you want to reserve. </h3>
 
 	{% for element in list_of_rows %}
 	<div class="container" align="center">
@@ -22,7 +23,7 @@
         				</button>
       				</div>
       				<div class="modal-body">
-        				Do you want to reserve this seat?
+        				Do you want to reserve seat {{seat.seat_row}}{{seat.seat_column}}?
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -46,7 +47,7 @@
         				</button>
       				</div>
       				<div class="modal-body">
-        				Do you want to cancel this seat?
+        				Do you want to cancel seat {{seat.seat_row}}{{seat.seat_column}}?
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -75,7 +76,7 @@
         				</button>
       				</div>
       				<div class="modal-body">
-        				Do you want to reserve this seat?
+        				Do you want to reserve seat {{seat.seat_row}}{{seat.seat_column}}?
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -98,7 +99,7 @@
         				</button>
       				</div>
       				<div class="modal-body">
-        				Do you want to cancel this seat?
+        				Do you want to cancel seat {{seat.seat_row}}{{seat.seat_column}}?
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -115,6 +116,8 @@
 		</div>
 
 		{% endfor %}
-
+<p align="center">Need help with your seat reservation? Click
+	<a href="/help" class="link-primary">here </a>
+	to get to our help page. </p>
 {% endblock %}
 </form>
