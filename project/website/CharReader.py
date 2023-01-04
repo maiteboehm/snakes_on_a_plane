@@ -88,7 +88,7 @@ def model_seat_filler(Dictionary):
 
         for ind, row in enumerate(value):
 
-            typen_listen = seat_identifier(row)
+            type_list = seat_identifier(row)
 
             for number_seat, column in enumerate(row):
                 seat_row_list.append(ind + 1)
@@ -106,16 +106,16 @@ def model_seat_filler(Dictionary):
                         seat_status.append('True')
                         seat_column_list.append(letter)
 
-                    if letter in typen_listen[0]:
+                    if letter in type_list[0]:
                         seat_type_list.append('Aisle_Left')
 
-                    elif letter in typen_listen[1]:
+                    elif letter in type_list[1]:
                         seat_type_list.append('Aisle_Right')
 
-                    elif letter in typen_listen[2]:
+                    elif letter in type_list[2]:
                         seat_type_list.append('Window')
 
-                    elif letter in typen_listen[3]:
+                    elif letter in type_list[3]:
                         seat_type_list.append('Normal')
 
     for i in range(len(flight_list)):
