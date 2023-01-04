@@ -13,7 +13,7 @@ on different imaginary flights.
 ## General Info
 ***
 This Flask and Python based webpage can be used for the reservation of
-seats on imaginary flights. Users can sign up with their email, name, birtdate
+seats on imaginary flights. Users can sign up with their email, name, birthdate
 and a passwort in order to create an account. Afterwards users can reserve or
 cancel seats after choosing a flight via the booking-system page of the website.
 Reserving and cancelling flights is possible via clicking on the requested seat.
@@ -22,7 +22,10 @@ before executing the request.
 ## Admin Info
 ***
 New flights can be added by providing chartIn.txt 
-files in the Input_Data folder inside the project folder. <br>
+files in the Input_Data folder inside the project folder. Afterwards, the admin 
+can update the seats database by pressing the "Update Seats" button. New flights
+will be added to the database and can be seen in the seats area of the admin 
+area. <br>
 The admin of this webpage can acquire statistical output in form 
 of a Statistics.txt file. Statistical output is saved in the Output_Data 
 folder inside the project folder. The statistical output contains the percentage 
