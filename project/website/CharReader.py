@@ -2,12 +2,12 @@ import os
 import string
 from .models import Seat
 from . import db
-"""  """
+
 Path = os.path.abspath(os.curdir)
 # Project_Path = os.path.dirname(Path)
 ChartIn_Path = Path + r'\Input_Data\\'
 
-""" creates dictionary from Textfiles in filepath with the function argument being the filepath of files. 
+""" Creates dictionary from Textfiles in filepath with the function argument being the filepath of files. 
 Returns dictionary with Flightnumber as key and list of rows of the specific flight(list of of lists) as value. """
 def dictionary_creater(filepath):
     filename_liste = []
