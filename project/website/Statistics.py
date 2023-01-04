@@ -22,7 +22,7 @@ def admin_statistics():
             # Project_Path = os.path.dirname(Path)
             out_path = path + r'\Output_Data\\'
 
-            # saveing_directory = r'C:\Users' + '\\' + str(username) + '\\Downloads\\'
+            # saving_directory = r'C:\Users' + '\\' + str(username) + '\\Downloads\\'
             name_of_file = 'Statistics.txt'
             filename_dictionary = os.path.join(out_path, name_of_file)
             if os.path.isfile(filename_dictionary):

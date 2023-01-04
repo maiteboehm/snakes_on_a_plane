@@ -120,17 +120,23 @@ def admin_statistics():
     admin = admin_user_checker(current_user)
     if admin:
         # Username = os.getlogin()
-        def database_reader(class_variable):
 
+        """Reads the Database which contains the Seat_IDs(Int,prim.key), Flight_Numbers(int), Seats(Capital Letters), 
+        Seat_types (defined by the seat_identifier function in Charreader) and Occupation_status(True or False Str)
+        and evaluates how many seats are occupied or available and saves them to the Statistics.txt in the Output_Data 
+        Directory of the project."""
+        def database_reader(class_variable):
             occupied_types = class_variable.query.filter_by(seat_status='False').all()
             available_types = class_variable.query.filter_by(seat_status='True').all()
             number_types = class_variable.query.all()
             occupation_all_seats = (len(occupied_types) * 100) / len(number_types)
             available_all_seats = 100 - occupation_all_seats
             username = os.getlogin()
-            saveing_directory = r'C:\Users' + '\\' + str(username) + '\\Downloads\\'
+            path = os.path.abspath(os.curdir)
+            saving_directory = path + r'\Output_Data\\'
             name_of_file = 'Statistics.txt'
-            filename_dictionary = os.path.join(saveing_directory, name_of_file)
+            filename_dictionary = os.path.join(saving_directory, name_of_file)
+            print(filename_dictionary)
             if os.path.isfile(filename_dictionary):
                 output = open(filename_dictionary, 'r')
                 lines = output.readlines()
@@ -173,7 +179,7 @@ def admin_statistics():
                 for i in range(len(occupied_types)):
                     output.write(str(occupied_types[i]) + '    ' + str(available_types[i]) + '\n')
 
-            print('Ihre Datei ist unter folgendem Pfad abgelegt: ' + saveing_directory)
+            print('Ihre Datei ist unter folgendem Pfad abgelegt: ' + saving_directory)
 
             return (occupation_all_seats)
 
