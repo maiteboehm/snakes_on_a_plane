@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from .models import User, Seat
 from .python_scripts import admin_user_checker
 from . import db
-from .CharReader import Dictionary_Creater
+from .CharReader import dictionary_creater
 from .CharReader import model_seat_filler
 import os
 
