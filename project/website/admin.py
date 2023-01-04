@@ -101,5 +101,10 @@ def update_seat(id):
         else:
             return render_template('admin_update_seat.html', user= current_user, seat_to_update=seat_to_update)
 
-
+@admins.route('/statistics', methods=['GET','POST'])
+@login_required
+def admin_statistics():
+    Admin = admin_user_check(current_user)
+    if Admin:
+        return render_template('admin_statistics.html', user = current_user)
 
