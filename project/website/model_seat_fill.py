@@ -28,7 +28,7 @@ def Seat_Identifier(Reihe):
         Fenster_Liste = ['A','D']
         Normal_Liste = []
 
-    return(Gang_Liste,Fenster_Liste,Normal_Liste)
+    return(Gang_Liste_Links,Gang_Liste_Rechts,Fenster_Liste,Normal_Liste)
 
 def model_seat_filler(Dictionary):
     Alphabet = list(string.ascii_uppercase)
