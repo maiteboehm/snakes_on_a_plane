@@ -36,11 +36,11 @@
             {% if current_user.role == 'admin' %}
             <a class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="admin-area">Admin Area</a>
-                <dif class="dropdown-menu">
+                <div class="dropdown-menu">
                   <a class="dropdown-item" id="admin-user" href="/admin-area/user">User</a>
                   <a class="dropdown-item" id="admin-seats" href="/admin-area/seats">Seats</a>
                   <a class="dropdown-item" id="admin-statistics" href="/admin-area/statistics">Statistics</a>
-                </dif>
+                </div>
             </a>
             {% endif %}
           <a class="nav-item nav-link" id="help" href="/help">Help</a>
