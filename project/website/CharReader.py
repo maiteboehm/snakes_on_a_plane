@@ -4,103 +4,108 @@ from .models import Seat
 from . import db
 
 Path = os.path.abspath(os.curdir)
-#Project_Path = os.path.dirname(Path)
-ChartIn_Path = Path + '\Input_Data\\'
+# Project_Path = os.path.dirname(Path)
+ChartIn_Path = Path + r'\Input_Data\\'
 
-def dictionary_resorter(Dictionary):
+
+def dictionary_resorter(dictionary):
 
     resorted_dictionary = {
 
     }
-    for key in Dictionary:
-        temp_liste = []
+    for key in dictionary:
+        temp_list = []
 
-        for index,row_list in enumerate(Dictionary[key]):
-            temp_liste2 = []
+        for index, row_list in enumerate(dictionary[key]):
+            temp_list2 = []
 
-            if index>9:
+            if index > 9:
                 number = str(''.join(row_list[0:2]))
 
             else:
                 number = str(row_list[0])
 
-            for ind,seat in enumerate(row_list):
+            for ind, seat in enumerate(row_list):
 
                 if seat.isdigit():
                     continue
 
                 else:
 
-                    seat_id = ''.join([number,seat])
-                    temp_liste2.append(str(seat_id))
+                    seat_id = ''.join([number, seat])
+                    temp_list2.append(str(seat_id))
 
-            temp_liste.append(temp_liste2)
+            temp_list.append(temp_list2)
 
-        resorted_dictionary.update({key:temp_liste})
+        resorted_dictionary.update({key: temp_list})
 
-    return(resorted_dictionary)
+    return resorted_dictionary
 
-def dictionary_creater(Filepath):
-    Filename_Liste = []
+
+def dictionary_creater(filepath):
+    filename_liste = []
 #    Exception_Liste = []
     filename_dictionary = {
 
     }
     flight_list_number = 1
 
-    for filename in os.listdir(Filepath):
+    for filename in os.listdir(filepath):
         filename_input = []
 
         if filename.endswith('.txt'):
-            Filename_Liste.append(filename)
-            Input = open(ChartIn_Path+str(filename),mode = 'r')
+            filename_liste.append(filename)
+            input = open(ChartIn_Path+str(filename), mode='r')
 
-            for index,line in enumerate(Input):
+            for index, line in enumerate(input):
                 line.lstrip()
-                Line_Liste = []
+                line_liste = []
 
                 for letter in line:
 
                     if letter.isdigit():
                         continue
 
-                    elif letter !='\t' and letter !='\n':
-                        Line_Liste.append(letter)
+                    elif letter != '\t' and letter != '\n':
+                        line_liste.append(letter)
 
-                filename_input.append(Line_Liste)
+                filename_input.append(line_liste)
 
-        filename_dictionary.update({flight_list_number:filename_input})
-        flight_list_number+=1
+        filename_dictionary.update({flight_list_number: filename_input})
+        flight_list_number += 1
         resorted_dictionary = filename_dictionary
-    return(resorted_dictionary)
+    return resorted_dictionary
 
-def seat_identifier(Reihe):
 
-    if len(Reihe)==10:
+def seat_identifier(reihe):
+
+    if len(reihe) == 10:
         aisle_list_left = ['C', 'G']
         aisle_liste_right = ['D', 'H']
         window_list = ['A', 'J']
         normal_list = ['B', 'E', 'F', 'I']
 
-    elif len(Reihe)==8:
+    elif len(reihe) == 8:
         aisle_list_left = ['C', 'E']
         aisle_liste_right = ['D', 'F']
         window_list = ['A', 'H']
         normal_list = ['B', 'G']
 
-    elif len(Reihe)==6:
+    elif len(reihe) == 6:
         aisle_list_left = ['C']
         aisle_liste_right = ['D']
         window_list = ['A', 'F']
         normal_list = ['B', 'E']
 
-    elif len(Reihe)==4:
+    elif len(reihe) == 4:
         aisle_list_left = ['B']
         aisle_liste_right = ['C']
         window_list = ['A', 'D']
         normal_list = []
 
-    return(aisle_list_left,aisle_liste_right,window_list,normal_list)
+    return aisle_list_left, aisle_liste_right, window_list, normal_list
+
+
 def model_seat_filler(Dictionary):
     alphabet = list(string.ascii_uppercase)
     flight_list = []
@@ -111,11 +116,11 @@ def model_seat_filler(Dictionary):
 
     for key, value in Dictionary.items():
 
-        for ind,row in enumerate(value):
+        for ind, row in enumerate(value):
 
             typen_listen = seat_identifier(row)
 
-            for number_seat,column in enumerate(row):
+            for number_seat, column in enumerate(row):
                 seat_row_list.append(ind + 1)
                 flight_list.append(key)
 
@@ -149,13 +154,14 @@ def model_seat_filler(Dictionary):
         if seat_unique_check:
             continue
         else:
-            new_flight_list = Seat(flight_list = flight_list[i], seat_row = seat_row_list[i], seat_column = seat_column_list[i],
-                              seat_status = seat_status[i], seat_type = seat_type_list[i], seat_unique = seat_unique)
+            new_flight_list = Seat(flight_list=flight_list[i], seat_row=seat_row_list[i], 
+                                   seat_column=seat_column_list[i], seat_status=seat_status[i], 
+                                   seat_type=seat_type_list[i], seat_unique=seat_unique)
             db.session.add(new_flight_list)
 
     db.session.commit()
-    #print(len(flight_list),len(seat_column_list),len(seat_row_list),len(seat_status))
-    return (flight_list,seat_row_list,seat_column_list,seat_status,seat_type_list)
-#Resorted_Dictionary = Dictionary_Creater(ChartIn_Path)
-#print(model_seat_filler(Resorted_Dictionary))
+# print(len(flight_list),len(seat_column_list),len(seat_row_list),len(seat_status))
+    return flight_list, seat_row_list, seat_column_list, seat_status, seat_type_list
 
+# Resorted_Dictionary = Dictionary_Creater(ChartIn_Path)
+# print(model_seat_filler(Resorted_Dictionary))
