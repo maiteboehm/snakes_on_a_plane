@@ -117,8 +117,8 @@ def update_seat(id):
 @admins.route('/statistics', methods=['GET', 'POST'])
 @login_required
 def admin_statistics():
-    Admin = admin_user_check(current_user)
-    if Admin:
+    admin = admin_user_checker(current_user)
+    if admin:
         Username = os.getlogin()
         def Database_Reader(Class):
 
