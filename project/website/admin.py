@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import User, Seat
-from .python_scripts import admin_user_check
+from .python_scripts import admin_user_checker
 from . import db
 from .CharReader import Dictionary_Creater
 from .CharReader import model_seat_filler
@@ -13,7 +13,7 @@ admins = Blueprint('admins', __name__)
 @admins.route('/', methods=['GET','POST'])
 @login_required
 def admin_home():
-    admin = admin_user_check(current_user)
+    admin = admin_user_checker(current_user)
     if admin:
         return render_template('admin_home.html', user= current_user)
 
@@ -21,7 +21,7 @@ def admin_home():
 @admins.route('/user', methods=['GET', 'POST'])
 @login_required
 def admin_user():
-    admin = admin_user_check(current_user)
+    admin = admin_user_checker(current_user)
     if admin:
         users = User.query.all()
         return render_template('admin_user.html', user=current_user, users=users)
@@ -48,7 +48,7 @@ def update_user(id):
 @admins.route('user/delete-user/<int:id>',methods=['POST', 'GET'])
 @login_required
 def delete_user(id):
-    admin = admin_user_check(current_user)
+    admin = admin_user_checker(current_user)
     if admin:
         user_to_delete = User.query.get_or_404(id)
         seat_to_change = Seat.query.filter_by(user_id = id).all()
@@ -66,7 +66,7 @@ def delete_user(id):
 @admins.route('/update-flights', methods=['GET','POST'])
 @login_required
 def admin_flights():
-    admin = admin_user_check(current_user)
+    admin = admin_user_checker(current_user)
     if admin:
         Path = os.path.abspath(os.curdir)
         ChartIn_Path = Path +'\Input_Data\\'
@@ -77,7 +77,7 @@ def admin_flights():
 @admins.route('/seats', methods=['GET', 'POST'])
 @login_required
 def admin_seats():
-    admin = admin_user_check(current_user)
+    admin = admin_user_checker(current_user)
     if admin:
         seats = Seat.query.all()
         return render_template('admin_seats.html', user=current_user, seats=seats)
@@ -85,7 +85,7 @@ def admin_seats():
 @admins.route('/seats/update-seats/<int:id>', methods=['GET','POST'])
 @login_required
 def update_seat(id):
-    admin = admin_user_check(current_user)
+    admin = admin_user_checker(current_user)
     if admin:
         seat_to_update = Seat.query.get_or_404(id)
         if request.method == 'POST':
@@ -107,7 +107,7 @@ def update_seat(id):
 @admins.route('/statistics', methods=['GET','POST'])
 @login_required
 def admin_statistics():
-    admin = admin_user_check(current_user)
+    admin = admin_user_checker(current_user)
     if admin:
         return render_template('admin_statistics.html', user = current_user)
 
