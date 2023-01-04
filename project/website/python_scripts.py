@@ -10,17 +10,15 @@ def calculate_age(born):
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 
-
 def admin_user_checker(current_user):
-    """ Verifies if the current user is an admin to access the admin area. If the user isn't a admin,
-    the user will redirected to the Home-Page.
+    """ Verifies if the current user is an admin to access the admin area. If the user isn't an admin,
+    the user will be redirected to the Home-Page.
     """
     if current_user.role == 'admin':
         return True
     else:
         flash('You need do be an Admin to access!!', category='error')
         return redirect(url_for('views.home'))
-
 
 
 def new_user_checker(email, first_name, last_name, birth_date, password1, password2):
@@ -41,7 +39,7 @@ def new_user_checker(email, first_name, last_name, birth_date, password1, passwo
     elif len(first_name) < 2:
         flash('First name must be greater than 1 character.', category='error')
     elif len(last_name) < 2:
-        flash('Last Name must be longer than one charcater', category='error')
+        flash('Last Name must be longer than one character', category='error')
     elif age < 18:
         flash('You must be older than 18 to create an account', category='error')
     elif password1 != password2:

@@ -14,7 +14,7 @@ def create_app():
     from .admin import admins
     from .models import User, Seat
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
+    app.config['SECRET_KEY'] = 'secret'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
     app.register_blueprint(views, url_prefix='/')

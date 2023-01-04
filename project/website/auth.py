@@ -61,7 +61,7 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
-    """Logs the user out and ends the session.After logging out the user will redirected to the login page."""
+    """Logs the user out and ends the session.After logging out the user will be redirected to the login page."""
     logout_user()
     database_reader(Seat)
     flash('Logged out successfully! Thank you for traveling with Snakes on a Plane!!', category='success')

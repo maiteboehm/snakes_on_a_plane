@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect
 from flask_login import login_required, current_user
 from .models import User, Seat
 from .python_scripts import admin_user_checker
@@ -54,7 +54,7 @@ def update_user(id):
 @admins.route('user/delete-user/<int:id>', methods=['POST', 'GET'])
 @login_required
 def delete_user(id):
-    """Deletes the user with a given user.id and changes all seats belonging to this user to free seats."""
+    """Deletes the user with a given user id and changes all seats belonging to this user to free seats."""
     admin = admin_user_checker(current_user)
     if admin:
         user_to_delete = User.query.get_or_404(id)
@@ -121,12 +121,10 @@ def update_seat(id):
 @admins.route('/statistics', methods=['GET', 'POST'])
 @login_required
 def admin_statistics():
-
+    """Creates a statistic page for the admin."""
     admin = admin_user_checker(current_user)
     if admin:
-        # Username = os.getlogin()
-        print(database_reader(Seat))
-        return render_template('admin_statistics.html', user = current_user)
+        return render_template('admin_statistics.html', user=current_user)
 
 
 @admins.route('/refresh-statistics', methods=['Get'])
