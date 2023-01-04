@@ -106,5 +106,67 @@ def update_seat(id):
 def admin_statistics():
     Admin = admin_user_check(current_user)
     if Admin:
-        return render_template('admin_statistics.html', user = current_user)
+        Username = os.getlogin()
+        def Database_Reader(Class):
+
+            Occupied_Types = Class.query.filter_by(seat_status = 'False').all()
+            Available_Types = Class.query.filter_by(seat_status = 'True').all()
+            Number_Types = Class.query.all()
+            Occupation_All_Seats = (len(Occupied_Types)*100)/len(Number_Types)
+            Available_All_Seats = 100-Occupation_All_Seats
+            Username = os.getlogin()
+            Safeing_Directory = r'C:\Users'+'\\' + str(Username) + '\\Downloads\\'
+            Name_Of_File = 'Statistics.txt'
+            Filename_Dictionary = os.path.join(Safeing_Directory, Name_Of_File)
+
+
+            if os.path.isfile(Filename_Dictionary) ==True:
+
+                Output = open(Filename_Dictionary,'r')
+                lines = Output.readlines()
+                Version_Counter_Liste = []
+                Last_Availability_Entry_Liste = []
+                Last_Availability_Entry = []
+
+                for letter in lines[0]:
+
+                    if letter.isdigit():
+                        Version_Counter_Liste.append(letter)
+                        Version_Counter = ''.join(Version_Counter_Liste)
+
+                for index,letter in enumerate(lines[int(Version_Counter)]):
+                    if letter == ' ':
+                        break
+
+                    elif letter.isdigit() or '.':
+                        Last_Availability_Entry.append(letter)
+
+                Last_Availability_Entry_Liste.append(''.join(Last_Availability_Entry))
+
+                if float(Last_Availability_Entry_Liste[0]) == float(Occupation_All_Seats):
+                    print('File not updated, everything up2date')
+                    return(Filename_Dictionary)
+
+                else:
+                    Output = open(Filename_Dictionary, 'a')
+                    Output.write('All_Seat_Occupation All_Seat_Availability '+ str(int(Version_Counter)+1) + '\n' + str(Occupation_All_Seats) + '    ' + str(Available_All_Seats) + '\n')
+                    Output.write('Occupied_Seats Available Seats' + '\n')
+
+                    for i in range(len(Occupied_Types)):
+                        Output.write(str(Occupied_Types[i]) + '    ' + str(Available_Types[i]) +  '\n')
+            else:
+                Output = open(Filename_Dictionary,'w')
+                Version_Counter = 1
+                Output.write('All_Seat_Occupation All_Seat_Availability ' + str(Version_Counter) + '\n' + str(Occupation_All_Seats) + '    ' + str(Available_All_Seats) + '\n')
+                Output.write('Occupied_Seats Available Seats' + '\n')
+
+                for i in range(len(Occupied_Types)):
+                    Output.write(str(Occupied_Types[i]) + '    ' + str(Available_Types[i]) +  '\n')
+
+            print('Ihre Datei ist unter folgendem Pfad abgelegt: ' + Safeing_Directory)
+
+            return (Occupation_All_Seats)
+
+        print(Database_Reader(Seat))
+    return render_template('admin_statistics.html', user = current_user)
 
