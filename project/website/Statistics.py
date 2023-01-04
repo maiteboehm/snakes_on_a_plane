@@ -1,4 +1,3 @@
-#from CharReader import dictionary_creater
 import os
 
 @admins.route('/statistics', methods=['GET', 'POST'])
@@ -19,13 +18,13 @@ def admin_statistics():
             occupation_all_seats = (len(occupied_types) * 100) / len(number_types)
             available_all_seats = 100 - occupation_all_seats
             username = os.getlogin()
-            Path = os.path.abspath(os.curdir)
+            path = os.path.abspath(os.curdir)
             # Project_Path = os.path.dirname(Path)
-            Out_Path = Path + r'\Output_Data\\'
+            out_path = path + r'\Output_Data\\'
 
             # saveing_directory = r'C:\Users' + '\\' + str(username) + '\\Downloads\\'
             name_of_file = 'Statistics.txt'
-            filename_dictionary = os.path.join(Out_Path, name_of_file)
+            filename_dictionary = os.path.join(out_path, name_of_file)
             if os.path.isfile(filename_dictionary):
                 output = open(filename_dictionary, 'r')
                 lines = output.readlines()
@@ -39,7 +38,7 @@ def admin_statistics():
                         version_counter_liste.append(letter)
                         version_counter = ''.join(version_counter_liste)
 
-                for index,letter in enumerate(lines[int(version_counter)]):
+                for index, letter in enumerate(lines[int(version_counter)]):
                     if letter == ' ':
                         break
 
@@ -50,12 +49,13 @@ def admin_statistics():
 
                 if float(last_availability_entry_liste[0]) == float(occupation_all_seats):
                     print('File not updated, everything up2date')
-                    return(filename_dictionary)
+                    return filename_dictionary
 
                 else:
                     output = open(filename_dictionary, 'a')
                     lines = output.readlines()
-                    lines.insert(version_counter, str(occupation_all_seats) + '    ' + str(available_all_seats) + '\n')
+                    lines.insert(int(version_counter), str(occupation_all_seats) +
+                                 '    ' + str(available_all_seats) + '\n')
                     lines[0] = str('All_Seat_Occupation All_Seat_Availability ' + str(int(version_counter) + 1) + '\n')
                     output.write('Occupied_Seats Available Seats' + '\n')
 
@@ -64,15 +64,16 @@ def admin_statistics():
             else:
                 output = open(filename_dictionary, 'w')
                 version_counter = 1
-                output.write('All_Seat_Occupation All_Seat_Availability ' + str(version_counter) + '\n' + str(occupation_all_seats) + '    ' + str(available_all_seats) + '\n')
+                output.write('All_Seat_Occupation All_Seat_Availability ' + str(version_counter) +
+                             '\n' + str(occupation_all_seats) + '    ' + str(available_all_seats) + '\n')
                 output.write('Occupied_Seats Available Seats' + '\n')
 
                 for i in range(len(occupied_types)):
                     output.write(str(occupied_types[i]) + '    ' + str(available_types[i]) + '\n')
 
-            print('Ihre Datei ist unter folgendem Pfad abgelegt: ' + saveing_directory)
+            print('Your file is saved at the following path: ' + out_path)
 
-            return (occupation_all_seats)
+            return occupation_all_seats
 
         print(database_reader(Seat))
-    return render_template('admin_statistics.html', user = current_user)
+    return render_template('admin_statistics.html', user=current_user)

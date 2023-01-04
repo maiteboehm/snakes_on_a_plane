@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Function for Statistic Text File Added.">
-      <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
+    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Statistics edited">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/website/Statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/Statistics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672850511968</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Statistics edited">
+      <created>1672852998829</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1672852998829</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -345,6 +353,7 @@
     <MESSAGE value="Made all variables with capital letters and for loop arguments small letters" />
     <MESSAGE value="Unified Model_Seat_Fill and CharReader to CharReader, also simplified the function" />
     <MESSAGE value="Function for Statistic Text File Added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Function for Statistic Text File Added." />
+    <MESSAGE value="Statistics edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="Statistics edited" />
   </component>
 </project>
