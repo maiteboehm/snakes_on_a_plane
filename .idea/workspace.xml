@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Statistics edited">
-      <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
+    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Comments added to CharReader">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -331,7 +331,42 @@
       <option name="project" value="LOCAL" />
       <updated>1672852998829</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Comments added to CharReader">
+      <created>1672855001684</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1672855001684</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Comments added to CharReader">
+      <created>1672855088851</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1672855088851</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Comments added to CharReader">
+      <created>1672855160467</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1672855160467</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Comments added to CharReader">
+      <created>1672855814488</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1672855814488</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Comments added to CharReader">
+      <created>1672856017777</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1672856017777</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -353,6 +388,7 @@
     <MESSAGE value="Unified Model_Seat_Fill and CharReader to CharReader, also simplified the function" />
     <MESSAGE value="Function for Statistic Text File Added." />
     <MESSAGE value="Statistics edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="Statistics edited" />
+    <MESSAGE value="Comments added to CharReader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments added to CharReader" />
   </component>
 </project>
