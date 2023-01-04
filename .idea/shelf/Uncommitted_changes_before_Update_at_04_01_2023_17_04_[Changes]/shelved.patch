@@ -1,0 +1,221 @@
+Index: project/website/CharReader.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import os\r\nimport string\r\nfrom .models import Seat\r\nfrom . import db\r\n\r\nPath = os.path.abspath(os.curdir)\r\n#Project_Path = os.path.dirname(Path)\r\nChartIn_Path = Path +'\\Input_Data\\\\'\r\n\r\ndef Dictionary_Resorter(Dictionary):\r\n\r\n    Resorted_Dictionary = {\r\n\r\n    }\r\n    for key in Dictionary:\r\n        Temp_Liste = []\r\n\r\n        for index,row_list in enumerate(Dictionary[key]):\r\n            Temp_Liste2 = []\r\n\r\n            if index>9:\r\n                Number = str(''.join(row_list[0:2]))\r\n\r\n            else:\r\n                Number = str(row_list[0])\r\n\r\n            for ind,seat in enumerate(row_list):\r\n\r\n                if seat.isdigit():\r\n                    continue\r\n\r\n                else:\r\n\r\n                    Seat_ID = ''.join([Number,seat])\r\n                    Temp_Liste2.append(str(Seat_ID))\r\n\r\n            Temp_Liste.append(Temp_Liste2)\r\n\r\n        Resorted_Dictionary.update({key:Temp_Liste})\r\n\r\n    return(Resorted_Dictionary)\r\n\r\ndef Dictionary_Creater(Filepath):\r\n    Filename_Liste = []\r\n#    Exception_Liste = []\r\n    Filename_Dictionary = {\r\n\r\n    }\r\n    Flight_Number = 1\r\n\r\n    for filename in os.listdir(Filepath):\r\n        Filename_Input = []\r\n\r\n        if filename.endswith('.txt'):\r\n            Filename_Liste.append(filename)\r\n            Input = open(ChartIn_Path+str(filename),mode = 'r')\r\n\r\n            for index,line in enumerate(Input):\r\n                line.lstrip()\r\n                Line_Liste = []\r\n\r\n                for letter in line:\r\n\r\n                    if letter.isdigit():\r\n                        continue\r\n\r\n                    elif letter !='\\t' and letter !='\\n':\r\n                        Line_Liste.append(letter)\r\n\r\n                Filename_Input.append(Line_Liste)\r\n\r\n        Filename_Dictionary.update({Flight_Number:Filename_Input})\r\n        Flight_Number+=1\r\n        Resorted_Dictionary = Filename_Dictionary\r\n    return(Resorted_Dictionary)\r\n\r\ndef Seat_Identifier(Reihe):\r\n\r\n    if len(Reihe)==10:\r\n        Gang_Liste_Links = ['C', 'G']\r\n        Gang_Liste_Rechts = ['D', 'H']\r\n        Fenster_Liste = ['A', 'J']\r\n        Normal_Liste = ['B', 'E', 'F', 'I']\r\n\r\n    elif len(Reihe)==8:\r\n        Gang_Liste_Links = ['C', 'E']\r\n        Gang_Liste_Rechts = ['D', 'F']\r\n        Fenster_Liste = ['A', 'H']\r\n        Normal_Liste = ['B', 'G']\r\n\r\n    elif len(Reihe)==6:\r\n        Gang_Liste_Links = ['C']\r\n        Gang_Liste_Rechts = ['D']\r\n        Fenster_Liste = ['A', 'F']\r\n        Normal_Liste = ['B', 'E']\r\n\r\n    elif len(Reihe)==4:\r\n        Gang_Liste_Links = ['B']\r\n        Gang_Liste_Rechts = ['C']\r\n        Fenster_Liste = ['A', 'D']\r\n        Normal_Liste = []\r\n\r\n    return(Gang_Liste_Links,Gang_Liste_Rechts,Fenster_Liste,Normal_Liste)\r\ndef model_seat_filler(Dictionary):\r\n    Alphabet = list(string.ascii_uppercase)\r\n    Flight = []\r\n    Seat_Row_Liste = []\r\n    Seat_Type = []\r\n    Seat_Column_Liste = []\r\n    Seat_Status = []\r\n\r\n    for key, value in Dictionary.items():\r\n\r\n        for ind,row in enumerate(value):\r\n\r\n            Typen_Listen = Seat_Identifier(row)\r\n\r\n            for number_seat,column in enumerate(row):\r\n                Seat_Row_Liste.append(ind + 1)\r\n                Flight.append(key)\r\n\r\n                for letter in str(column):\r\n\r\n                    if letter == 'X':\r\n                        letter = Alphabet[number_seat]\r\n                        Replaced_Seat = letter\r\n                        Seat_Column_Liste.append(Replaced_Seat)\r\n                        Seat_Status.append('False')\r\n\r\n                    elif letter in Alphabet[0:13]:\r\n                        Seat_Status.append('True')\r\n                        Seat_Column_Liste.append(letter)\r\n\r\n                    if letter in Typen_Listen[0]:\r\n                        Seat_Type.append('Aisle_Left')\r\n\r\n                    elif letter in Typen_Listen[1]:\r\n                        Seat_Type.append('Aisle_Right')\r\n\r\n                    elif letter in Typen_Listen[2]:\r\n                        Seat_Type.append('Window')\r\n\r\n                    elif letter in Typen_Listen[3]:\r\n                        Seat_Type.append('Normal')\r\n\r\n    for i in range(len(Flight)):\r\n        Seat_Unique = str(Flight[i])+'_'+str(Seat_Row_Liste[i])+'_'+str(Seat_Column_Liste[i])\r\n        Seat_Unique_Check = Seat.query.filter_by(seat_unique=Seat_Unique).first()\r\n        if Seat_Unique_Check:\r\n            continue\r\n        else:\r\n            New_Flight = Seat(flight = Flight[i], seat_row = Seat_Row_Liste[i], seat_column = Seat_Column_Liste[i],\r\n                              seat_status = Seat_Status[i], seat_type = Seat_Type[i], seat_unique = Seat_Unique)\r\n            db.session.add(New_Flight)\r\n\r\n    db.session.commit()\r\n    #print(len(Flight),len(Seat_Column_Liste),len(Seat_Row_Liste),len(Seat_Status))\r\n    return (Flight,Seat_Row_Liste,Seat_Column_Liste,Seat_Status,Seat_Type)\r\n#Resorted_Dictionary = Dictionary_Creater(ChartIn_Path)\r\n#print(model_seat_filler(Resorted_Dictionary))\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/website/CharReader.py b/project/website/CharReader.py
+--- a/project/website/CharReader.py	(revision c330862706b28a50d17a4a711e7b42e5abd57652)
++++ b/project/website/CharReader.py	(date 1672837245639)
+@@ -1,11 +1,12 @@
+ import os
+ import string
+-from .models import Seat
+-from . import db
++#from .models import Seat
++#from . import db
+ 
+ Path = os.path.abspath(os.curdir)
+ #Project_Path = os.path.dirname(Path)
+ ChartIn_Path = Path +'\Input_Data\\'
++print(str(ChartIn_Path))
+ 
+ def Dictionary_Resorter(Dictionary):
+ 
+@@ -42,7 +43,6 @@
+ 
+ def Dictionary_Creater(Filepath):
+     Filename_Liste = []
+-#    Exception_Liste = []
+     Filename_Dictionary = {
+ 
+     }
+@@ -77,30 +77,30 @@
+ def Seat_Identifier(Reihe):
+ 
+     if len(Reihe)==10:
+-        Gang_Liste_Links = ['C', 'G']
+-        Gang_Liste_Rechts = ['D', 'H']
+-        Fenster_Liste = ['A', 'J']
+-        Normal_Liste = ['B', 'E', 'F', 'I']
++        Aisle_Liste_Left = ['C', 'G']
++        Aisle_Liste_Right = ['D', 'H']
++        Window_List = ['A', 'J']
++        Normal_List = ['B', 'E', 'F', 'I']
+ 
+     elif len(Reihe)==8:
+-        Gang_Liste_Links = ['C', 'E']
+-        Gang_Liste_Rechts = ['D', 'F']
+-        Fenster_Liste = ['A', 'H']
+-        Normal_Liste = ['B', 'G']
++        Aisle_Liste_Left = ['C', 'E']
++        Aisle_Liste_Right = ['D', 'F']
++        Window_List = ['A', 'H']
++        Normal_List = ['B', 'G']
+ 
+     elif len(Reihe)==6:
+-        Gang_Liste_Links = ['C']
+-        Gang_Liste_Rechts = ['D']
+-        Fenster_Liste = ['A', 'F']
+-        Normal_Liste = ['B', 'E']
++        Aisle_Liste_Left = ['C']
++        Aisle_Liste_Right = ['D']
++        Window_List = ['A', 'F']
++        Normal_List = ['B', 'E']
+ 
+     elif len(Reihe)==4:
+-        Gang_Liste_Links = ['B']
+-        Gang_Liste_Rechts = ['C']
+-        Fenster_Liste = ['A', 'D']
+-        Normal_Liste = []
++        Aisle_Liste_Left = ['B']
++        Aisle_Liste_Right = ['C']
++        Window_List = ['A', 'D']
++        Normal_List = []
+ 
+-    return(Gang_Liste_Links,Gang_Liste_Rechts,Fenster_Liste,Normal_Liste)
++    return(Aisle_Liste_Left,Aisle_Liste_Right,Window_List,Normal_List)
+ def model_seat_filler(Dictionary):
+     Alphabet = list(string.ascii_uppercase)
+     Flight = []
+Index: project/website/Statistics.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from CharReader import Dictionary_Creater\r\nimport os\r\nPath = os.path.abspath(os.curdir)\r\nprint(Path)\r\nProject_Path = os.path.dirname(Path)\r\nprint(Project_Path)\r\nChartIn_Path = Path +'\\Input_Data\\\\'\r\nprint(ChartIn_Path)\r\nResorted_Dictionary = Dictionary_Creater(ChartIn_Path)\r\nprint(Resorted_Dictionary)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/website/Statistics.py b/project/website/Statistics.py
+--- a/project/website/Statistics.py	(revision c330862706b28a50d17a4a711e7b42e5abd57652)
++++ b/project/website/Statistics.py	(date 1672833597877)
+@@ -1,10 +1,10 @@
+-from CharReader import Dictionary_Creater
++import flask_sqlalchemy
++from . import db
+ import os
+-Path = os.path.abspath(os.curdir)
+-print(Path)
+-Project_Path = os.path.dirname(Path)
+-print(Project_Path)
+-ChartIn_Path = Path +'\Input_Data\\'
+-print(ChartIn_Path)
+-Resorted_Dictionary = Dictionary_Creater(ChartIn_Path)
+-print(Resorted_Dictionary)
+\ No newline at end of file
++from models import Seat
++def Database_Reader(Klasse):
++    Seats = Klasse.query.all()
++    print(len(Seats))
++    return(len(Seats))
++print(Database_reader(Seat))
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"aff0e9a7-a9a5-4e9b-a40c-71833f67b16a\" name=\"Changes\" comment=\"Made all variables with capital letters and for loop arguments small letters\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/project/Input_Data/chartIn5.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/project/Input_Data/chartIn5.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/project/website/CharReader.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/project/website/CharReader.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2JV0UpDz7w8Uil1ktqzCJCI7DJx\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/max_b/Desktop&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\max_b\\Desktop\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\max_b\\Documents\\GitHub\\snakes_on_a_plane\\project\\website\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Python.CharReader\">\r\n    <configuration name=\"CharReader\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"snakes_on_a_plane\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/project/website\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/project/website/CharReader.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"FlightDatabase\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"snakes_on_a_plane\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/project/website\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/project/website/FlightDatabase.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"Statistics\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"snakes_on_a_plane\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/project/website\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/project/website/Statistics.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"snakes_on_a_plane\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/project\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/project/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"model_seat_fill\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"snakes_on_a_plane\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/project/website\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/project/website/model_seat_fill.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.CharReader\" />\r\n        <item itemvalue=\"Python.main\" />\r\n        <item itemvalue=\"Python.Statistics\" />\r\n        <item itemvalue=\"Python.model_seat_fill\" />\r\n        <item itemvalue=\"Python.FlightDatabase\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"aff0e9a7-a9a5-4e9b-a40c-71833f67b16a\" name=\"Changes\" comment=\"\" />\r\n      <created>1672147983944</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1672147983944</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Fixed Bug\">\r\n      <created>1672161134244</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672161134244</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Started Filling Database with Seat class\">\r\n      <created>1672161503476</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672161503476</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Started Filling Database with Seat class\">\r\n      <created>1672239081322</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672239081322</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Started Filling Database with Seat class\">\r\n      <created>1672268678644</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672268678644</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Started Filling Database with Seat class\">\r\n      <created>1672308951709</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672308951709</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Started Filling Database with Seat class\">\r\n      <created>1672311467664</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672311467664</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Started Filling Database with Seat class\">\r\n      <created>1672314326436</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672314326436</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Made function with path as variable\">\r\n      <created>1672314669241</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672314669241</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Made function with path as variable\">\r\n      <created>1672314879572</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672314879572</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Made function with path as variable\">\r\n      <created>1672316200158</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672316200158</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Made function with path as variable\">\r\n      <created>1672318552993</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672318552993</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Made function with path as variable\">\r\n      <created>1672318575330</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672318575330</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Made function with path as variable\">\r\n      <created>1672437115643</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672437115643</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Made function with path as variable\">\r\n      <created>1672438541800</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672438541800</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Made function with path as variable\">\r\n      <created>1672438642825</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672438642825</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"Made all variables with capital letters and for loop arguments small letters\">\r\n      <created>1672439361581</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672439361581</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"Made all variables with capital letters and for loop arguments small letters\">\r\n      <created>1672440384981</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672440384981</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Made all variables with capital letters and for loop arguments small letters\">\r\n      <created>1672824997294</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672824997295</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Made all variables with capital letters and for loop arguments small letters\">\r\n      <created>1672827340622</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1672827340622</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"20\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Fixed Bug\" />\r\n    <MESSAGE value=\"Started Filling Database with Seat class\" />\r\n    <MESSAGE value=\"Made function with path as variable\" />\r\n    <MESSAGE value=\"Made all variables with capital letters and for loop arguments small letters\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Made all variables with capital letters and for loop arguments small letters\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c330862706b28a50d17a4a711e7b42e5abd57652)
++++ b/.idea/workspace.xml	(date 1672841244793)
+@@ -4,10 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Made all variables with capital letters and for loop arguments small letters">
++    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Unified Model_Seat_Fill and CharReader to CharReader, also simplified the function">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/project/Input_Data/chartIn5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project/Input_Data/chartIn5.txt" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/project/website/Statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/Statistics.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/project/website/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/admin.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -47,7 +48,7 @@
+       <recent name="C:\Users\max_b\Documents\GitHub\snakes_on_a_plane\project\website" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Python.CharReader">
++  <component name="RunManager" selected="Python.main">
+     <configuration name="CharReader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+       <module name="snakes_on_a_plane" />
+       <option name="INTERPRETER_OPTIONS" value="" />
+@@ -69,7 +70,7 @@
+       <option name="INPUT_FILE" value="" />
+       <method v="2" />
+     </configuration>
+-    <configuration name="FlightDatabase" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++    <configuration name="Statistics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+       <module name="snakes_on_a_plane" />
+       <option name="INTERPRETER_OPTIONS" value="" />
+       <option name="PARENT_ENVS" value="true" />
+@@ -81,7 +82,7 @@
+       <option name="IS_MODULE_SDK" value="true" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/website/FlightDatabase.py" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/website/Statistics.py" />
+       <option name="PARAMETERS" value="" />
+       <option name="SHOW_COMMAND_LINE" value="false" />
+       <option name="EMULATE_TERMINAL" value="false" />
+@@ -90,7 +91,7 @@
+       <option name="INPUT_FILE" value="" />
+       <method v="2" />
+     </configuration>
+-    <configuration name="Statistics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++    <configuration name="admin" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+       <module name="snakes_on_a_plane" />
+       <option name="INTERPRETER_OPTIONS" value="" />
+       <option name="PARENT_ENVS" value="true" />
+@@ -102,7 +103,7 @@
+       <option name="IS_MODULE_SDK" value="true" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/website/Statistics.py" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/website/admin.py" />
+       <option name="PARAMETERS" value="" />
+       <option name="SHOW_COMMAND_LINE" value="false" />
+       <option name="EMULATE_TERMINAL" value="false" />
+@@ -155,11 +156,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Python.CharReader" />
+         <item itemvalue="Python.main" />
++        <item itemvalue="Python.admin" />
++        <item itemvalue="Python.CharReader" />
+         <item itemvalue="Python.Statistics" />
+         <item itemvalue="Python.model_seat_fill" />
+-        <item itemvalue="Python.FlightDatabase" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -305,7 +306,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1672827340622</updated>
+     </task>
+-    <option name="localTasksCounter" value="20" />
++    <task id="LOCAL-00020" summary="Unified Model_Seat_Fill and CharReader to CharReader, also simplified the function">
++      <created>1672830996512</created>
++      <option name="number" value="00020" />
++      <option name="presentableId" value="LOCAL-00020" />
++      <option name="project" value="LOCAL" />
++      <updated>1672830996512</updated>
++    </task>
++    <option name="localTasksCounter" value="21" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -324,6 +332,7 @@
+     <MESSAGE value="Started Filling Database with Seat class" />
+     <MESSAGE value="Made function with path as variable" />
+     <MESSAGE value="Made all variables with capital letters and for loop arguments small letters" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Made all variables with capital letters and for loop arguments small letters" />
++    <MESSAGE value="Unified Model_Seat_Fill and CharReader to CharReader, also simplified the function" />
++    <option name="LAST_COMMIT_MESSAGE" value="Unified Model_Seat_Fill and CharReader to CharReader, also simplified the function" />
+   </component>
+ </project>
+\ No newline at end of file
