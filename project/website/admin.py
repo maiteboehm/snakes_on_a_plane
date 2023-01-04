@@ -76,8 +76,8 @@ def admin_flights():
     admin = admin_user_checker(current_user)
     if admin:
         path = os.path.abspath(os.curdir)
-        chartin_path = path + r'\Input_Data\\'
-        flight_dictionary = Dictionary_Creater(chartin_path)
+        chart_in_path = path + r'\Input_Data\\'
+        flight_dictionary = dictionary_creater(chart_in_path)
         model_seat_filler(flight_dictionary)
         return redirect('/admin-area/seats')
 
