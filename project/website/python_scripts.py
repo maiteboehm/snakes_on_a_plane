@@ -1,24 +1,39 @@
 from datetime import date
 from flask import flash, redirect, url_for
 from datetime import datetime
+from .models import User
+
 
 def calculate_age(born):
+    """ Calculates the age"""
     today = date.today()
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+
+
 def admin_user_checker(current_user):
+    """ Verifies if the current user is an admin to access the admin area. If the user isn't a admin,
+    the user will redirected to the Home-Page.
+    """
     if current_user.role == 'admin':
         return True
     else:
         flash('You need do be an Admin to access!!', category='error')
         return redirect(url_for('views.home'))
 
+
+
 def new_user_checker(user, email, first_name, last_name, birth_date, password1, password2):
+    """ Verifies if the form fo a new user is filled correctly and if a user with the same email already exists."""
+    user = User.query.filter_by(email=email).first()
+
     if birth_date == '':
         flash('Please insert your date of birth', category='error')
         age = 0
     else:
         birth_date = datetime.strptime(birth_date, '%Y-%m-%d')
         age = calculate_age(birth_date)
+
     if user:
         flash('Email already exists.', category='error')
     elif len(email) < 4:

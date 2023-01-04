@@ -11,6 +11,7 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+    """Creates the sign-up pages on which new users can log in."""
     if request.method == 'POST':
         email = request.form.get('email')
         first_name = request.form.get('first_name')
@@ -19,9 +20,8 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         role = 'user'
-        user = User.query.filter_by(email=email).first()
         user_to_check = new_user_checker(user, email, first_name, last_name, birth_date, password1, password2)
-
+        # if the user check is passed a new user will be added to the user-database and logged in.
         if user_to_check:
             birth_date = datetime.strptime(birth_date, '%Y-%m-%d')
             new_user = User(email=email, first_name=first_name, last_name=last_name, birth_date=birth_date,
