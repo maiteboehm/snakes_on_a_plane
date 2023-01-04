@@ -1,6 +1,8 @@
 from website import create_app
 
-app = create_app()  # creates the webserver
+#Creates the webserver
+app = create_app()
 
+#Starts the webserver
 if __name__ == '__main__':
-    app.run(debug=True)  # starts the webserver
+    app.run(debug=True)  
