@@ -1,6 +1,5 @@
 from flask import Flask, Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
-#from .python_scripts import write_seats_html
 from .models import User, Seat
 from . import db
 
@@ -66,26 +65,6 @@ def cancel_seat(flights, id):
 def modal(flights, id):
     return render_template('modal.html', user = current_user)
 
-
-#@views.route('/seats', methods=['GET', 'POST'])
-#@login_required
-#def seats():
- #   if request.method == 'GET':
-  #      with open(r'Input_Data/chartIn2.txt', 'r') as f:
-   #         seat_list = []
-    #        seat_list_new = []
-     #       for line in f:
-      #          data = line.split('\t')
-       #         seat_list.append(data)
-        #        for row in seat_list:
-         #           row_new = []
-          #          for seat in row:
-           #             seat_new = seat.strip()
-           #             row_new.append(seat_new)
-            #    seat_list_new.append(row_new)
-        #write_seats_html(seat_list_new, 'website/templates')
-
-    #return render_template("seats.html", user=current_user)
 
 
 
