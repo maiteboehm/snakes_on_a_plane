@@ -129,7 +129,6 @@ def model_seat_filler(Dictionary):
 
                     elif letter in Alphabet[0:13]:
                         Seat_Status.append('True')
-                        print(letter)
                         Seat_Column_Liste.append(letter)
 
                     if letter in Typen_Listen[0]:
