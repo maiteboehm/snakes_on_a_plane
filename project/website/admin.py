@@ -132,9 +132,11 @@ def admin_statistics():
             occupation_all_seats = (len(occupied_types) * 100) / len(number_types)
             available_all_seats = 100 - occupation_all_seats
             username = os.getlogin()
-            saving_directory = r'C:\Users' + '\\' + str(username) + '\\Downloads\\'
+            path = os.path.abspath(os.curdir)
+            saving_directory = path + r'\Output_Data\\'
             name_of_file = 'Statistics.txt'
             filename_dictionary = os.path.join(saving_directory, name_of_file)
+            print(filename_dictionary)
             if os.path.isfile(filename_dictionary):
                 output = open(filename_dictionary, 'r')
                 lines = output.readlines()
