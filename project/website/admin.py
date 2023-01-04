@@ -10,12 +10,13 @@ import os
 
 admins = Blueprint('admins', __name__)
 
-@admins.route('/', methods=['GET','POST'])
+
+@admins.route('/', methods=['GET', 'POST'])
 @login_required
 def admin_home():
     admin = admin_user_checker(current_user)
     if admin:
-        return render_template('admin_home.html', user= current_user)
+        return render_template('admin_home.html', user=current_user)
 
 
 @admins.route('/user', methods=['GET', 'POST'])
@@ -25,6 +26,7 @@ def admin_user():
     if admin:
         users = User.query.all()
         return render_template('admin_user.html', user=current_user, users=users)
+
 
 @admins.route('/user/update-user/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -43,15 +45,16 @@ def update_user(id):
             flash('Account NOT updated!', category='error')
             return redirect('/admin-area/user')
     else:
-        return render_template('admin_update_user.html', user= current_user, user_to_update=user_to_update)
+        return render_template('admin_update_user.html', user=current_user, user_to_update=user_to_update)
 
-@admins.route('user/delete-user/<int:id>',methods=['POST', 'GET'])
+
+@admins.route('user/delete-user/<int:id>', methods=['POST', 'GET'])
 @login_required
 def delete_user(id):
     admin = admin_user_checker(current_user)
     if admin:
         user_to_delete = User.query.get_or_404(id)
-        seat_to_change = Seat.query.filter_by(user_id = id).all()
+        seat_to_change = Seat.query.filter_by(user_id=id).all()
         for change in seat_to_change:
             change.seat_status = 'True'
         try:
@@ -63,16 +66,18 @@ def delete_user(id):
             flash('Account NOT deleted!', category='error')
             return redirect('/admin-area/user')
 
-@admins.route('/update-flights', methods=['GET','POST'])
+
+@admins.route('/update-flights', methods=['GET', 'POST'])
 @login_required
 def admin_flights():
     admin = admin_user_checker(current_user)
     if admin:
-        Path = os.path.abspath(os.curdir)
-        ChartIn_Path = Path +'\Input_Data\\'
-        Flight_Dictionary = Dictionary_Creater(ChartIn_Path)
-        model_seat_filler(Flight_Dictionary)
+        path = os.path.abspath(os.curdir)
+        chartin_path = path + r'\Input_Data\\'
+        flight_dictionary = Dictionary_Creater(chartin_path)
+        model_seat_filler(flight_dictionary)
         return redirect('/admin-area/seats')
+
 
 @admins.route('/seats', methods=['GET', 'POST'])
 @login_required
@@ -82,7 +87,8 @@ def admin_seats():
         seats = Seat.query.all()
         return render_template('admin_seats.html', user=current_user, seats=seats)
 
-@admins.route('/seats/update-seats/<int:id>', methods=['GET','POST'])
+
+@admins.route('/seats/update-seats/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_seat(id):
     admin = admin_user_checker(current_user)
@@ -90,7 +96,7 @@ def update_seat(id):
         seat_to_update = Seat.query.get_or_404(id)
         if request.method == 'POST':
             seat_to_update.user_id = request.form['user_id']
-            if seat_to_update.user_id == '' or seat_to_update.user_id =='None':
+            if seat_to_update.user_id == '' or seat_to_update.user_id == 'None':
                 seat_to_update.seat_status = 'True'
             else:
                 seat_to_update.seat_status = 'False'
@@ -102,12 +108,12 @@ def update_seat(id):
                 flash('Account NOT updated!', category='error')
                 return redirect('/admin-area/seats')
         else:
-            return render_template('admin_update_seat.html', user= current_user, seat_to_update=seat_to_update)
+            return render_template('admin_update_seat.html', user=current_user, seat_to_update=seat_to_update)
 
-@admins.route('/statistics', methods=['GET','POST'])
+
+@admins.route('/statistics', methods=['GET', 'POST'])
 @login_required
 def admin_statistics():
     admin = admin_user_checker(current_user)
     if admin:
-        return render_template('admin_statistics.html', user = current_user)
-
+        return render_template('admin_statistics.html', user=current_user)
