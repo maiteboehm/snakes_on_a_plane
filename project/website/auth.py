@@ -3,6 +3,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from .models import User
+from .Statistics import database_reader
 from . import db
 
 from .python_scripts import new_user_checker
@@ -62,5 +63,6 @@ def login():
 def logout():
     """Logs the user out and ends the session.After logging out the user will redirected to the login page."""
     logout_user()
+    database_reader(Seat)
     flash('Logged out successfully! Thank you for traveling with Snakes on a Plane!!', category='success')
     return redirect(url_for('auth.login'))
