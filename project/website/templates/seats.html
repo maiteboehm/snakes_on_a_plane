@@ -21,13 +21,13 @@
 		{% endif %}
 		<!-- checking for other requirements -->
 		{% elif seat.seat_status == 'True' %}
-		<a type="button" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal">{{seat.seat_column}}</a>
+		<a type="button" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal{{seat.id}}">{{seat.seat_column}}</a>
 		<!-- Begin Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="exampleModal{{seat.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   			<div class="modal-dialog" role="document">
     			<div class="modal-content">
       				<div class="modal-header">
-        				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        				<h5 class="modal-title" id="exampleModalLabel{{seat.id}}">Modal title</h5>
         				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           				<span aria-hidden="true">&times;</span>
         				</button>
@@ -37,7 +37,7 @@
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        				<a type="button" class="btn btn-primary" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}">Save changes</a>
+        				<a type="button" class="btn btn-primary" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
       				</div>
     			</div>
   			</div>
