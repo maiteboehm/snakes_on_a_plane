@@ -54,6 +54,7 @@ def update_user(id):
 @admins.route('user/delete-user/<int:id>', methods=['POST', 'GET'])
 @login_required
 def delete_user(id):
+    """Deletes the user with a given user.id and changes all seats belonging to this user to free seats."""
     admin = admin_user_checker(current_user)
     if admin:
         user_to_delete = User.query.get_or_404(id)
@@ -73,6 +74,7 @@ def delete_user(id):
 @admins.route('/update-flights', methods=['GET', 'POST'])
 @login_required
 def admin_flights():
+    """Updates the seat database so that new input files in the folder 'Input_Data' are included."""
     admin = admin_user_checker(current_user)
     if admin:
         path = os.path.abspath(os.curdir)
@@ -85,6 +87,7 @@ def admin_flights():
 @admins.route('/seats', methods=['GET', 'POST'])
 @login_required
 def admin_seats():
+    """Creates an admin-seats page on which the admin can see all seats in the database."""
     admin = admin_user_checker(current_user)
     if admin:
         seats = Seat.query.all()
@@ -94,6 +97,7 @@ def admin_seats():
 @admins.route('/seats/update-seats/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_seat(id):
+    """Creates a seat update page where the administrator can change which user the seat belongs to."""
     admin = admin_user_checker(current_user)
     if admin:
         seat_to_update = Seat.query.get_or_404(id)
