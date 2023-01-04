@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from .models import User, Seat
 from .python_scripts import admin_user_checker
 from . import db
-from .CharReader import Dictionary_Creater
+from .CharReader import dictionary_creater
 from .CharReader import model_seat_filler
 import os
 
@@ -76,8 +76,8 @@ def admin_flights():
     admin = admin_user_checker(current_user)
     if admin:
         path = os.path.abspath(os.curdir)
-        chartin_path = path + r'\Input_Data\\'
-        flight_dictionary = Dictionary_Creater(chartin_path)
+        chart_in_path = path + r'\Input_Data\\'
+        flight_dictionary = dictionary_creater(chart_in_path)
         model_seat_filler(flight_dictionary)
         return redirect('/admin-area/seats')
 
