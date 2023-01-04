@@ -7,39 +7,8 @@ Path = os.path.abspath(os.curdir)
 # Project_Path = os.path.dirname(Path)
 ChartIn_Path = Path + r'\Input_Data\\'
 
-
-def dictionary_resorter(dictionary):
-
-    resorted_dictionary = {
-
-    }
-    for key in dictionary:
-        temp_list = []
-
-        for index, row_list in enumerate(dictionary[key]):
-            temp_list2 = []
-
-            if index > 9:
-                number = str(''.join(row_list[0:2]))
-
-            else:
-                number = str(row_list[0])
-
-            for ind, seat in enumerate(row_list):
-
-                if seat.isdigit():
-                    continue
-
-                else:
-
-                    seat_id = ''.join([number, seat])
-                    temp_list2.append(str(seat_id))
-
-            temp_list.append(temp_list2)
-
-        resorted_dictionary.update({key: temp_list})
-
-    return resorted_dictionary
+""" Creates dictionary from Textfiles in filepath with the function argument being the filepath of files. 
+Returns dictionary with Flightnumber as key and list of rows of the specific flight(list of of lists) as value. """
 
 
 def dictionary_creater(filepath):
@@ -77,7 +46,11 @@ def dictionary_creater(filepath):
     return resorted_dictionary
 
 
+"""Seat_Identifier serves as Function to define the different types of seats that are present in the Flight.
+The Function takes a row as argument and returns lists that contain the seats in capital letters according to their 
+ type."""
 def seat_identifier(reihe):
+
 
     if len(reihe) == 10:
         aisle_list_left = ['C', 'G']
@@ -106,7 +79,11 @@ def seat_identifier(reihe):
     return aisle_list_left, aisle_liste_right, window_list, normal_list
 
 
+"""Function takes the Dictionary as argument and fills the class seat of the Database which is initialized in __init__
+ with values from the Dictionary. Returns the Lists which are filled in the Database."""
 def model_seat_filler(Dictionary):
+
+
     alphabet = list(string.ascii_uppercase)
     flight_list = []
     seat_row_list = []
@@ -118,7 +95,7 @@ def model_seat_filler(Dictionary):
 
         for ind, row in enumerate(value):
 
-            typen_listen = seat_identifier(row)
+            type_list = seat_identifier(row)
 
             for number_seat, column in enumerate(row):
                 seat_row_list.append(ind + 1)
@@ -136,16 +113,16 @@ def model_seat_filler(Dictionary):
                         seat_status.append('True')
                         seat_column_list.append(letter)
 
-                    if letter in typen_listen[0]:
+                    if letter in type_list[0]:
                         seat_type_list.append('Aisle_Left')
 
-                    elif letter in typen_listen[1]:
+                    elif letter in type_list[1]:
                         seat_type_list.append('Aisle_Right')
 
-                    elif letter in typen_listen[2]:
+                    elif letter in type_list[2]:
                         seat_type_list.append('Window')
 
-                    elif letter in typen_listen[3]:
+                    elif letter in type_list[3]:
                         seat_type_list.append('Normal')
 
     for i in range(len(flight_list)):
@@ -160,8 +137,6 @@ def model_seat_filler(Dictionary):
             db.session.add(new_flight_list)
 
     db.session.commit()
-# print(len(flight_list),len(seat_column_list),len(seat_row_list),len(seat_status))
+
     return flight_list, seat_row_list, seat_column_list, seat_status, seat_type_list
 
-# Resorted_Dictionary = Dictionary_Creater(ChartIn_Path)
-# print(model_seat_filler(Resorted_Dictionary))

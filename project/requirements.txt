@@ -3,4 +3,3 @@ flask-sqlalchemy
 flask-login
 flask-admin
 datetime
-Flask-Modals
