@@ -23,7 +23,7 @@ def admin_user_checker(current_user):
 
 
 
-def new_user_checker(user, email, first_name, last_name, birth_date, password1, password2):
+def new_user_checker(email, first_name, last_name, birth_date, password1, password2):
     """ Verifies if the form fo a new user is filled correctly and if a user with the same email already exists."""
     user = User.query.filter_by(email=email).first()
 

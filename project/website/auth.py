@@ -21,7 +21,8 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         role = 'user'
-        user_to_check = new_user_checker(user, email, first_name, last_name, birth_date, password1, password2)
+        user_to_check = new_user_checker(email, first_name, last_name, birth_date, password1, password2)
+
         # if the user check is passed a new user will be added to the user-database and logged in.
         if user_to_check:
             birth_date = datetime.strptime(birth_date, '%Y-%m-%d')
@@ -39,6 +40,7 @@ def sign_up():
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    """Creates the login page on which the users where the user can log in."""
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -58,6 +60,7 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
+    """Logs the user out and ends the session.After logging out the user will redirected to the login page."""
     logout_user()
     flash('Logged out successfully! Thank you for traveling with Snakes on a Plane!!', category='success')
     return redirect(url_for('auth.login'))
