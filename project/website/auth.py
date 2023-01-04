@@ -9,6 +9,7 @@ from .python_scripts import new_user_checker
 
 auth = Blueprint('auth', __name__)
 
+
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     """Creates the sign-up pages on which new users can log in."""
