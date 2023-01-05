@@ -3,9 +3,9 @@ import string
 from .models import Seat
 from . import db
 
-Path = os.path.abspath(os.curdir)
+# Path = os.path.abspath(os.curdir)
 # Project_Path = os.path.dirname(Path)
-ChartIn_Path = Path + r'\Input_Data\\'
+# ChartIn_Path = Project_Path + r'\Input_Data\\'
 
 
 def dictionary_creater(filepath):

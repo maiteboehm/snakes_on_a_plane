@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Function for Statistic Text File Added.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/Output_Data/Statistics.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/project/instance/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/website/Statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/Statistics.py" afterDir="false" />
-    </list>
+    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="BugFixes, not complete yet" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +43,7 @@
       <recent name="C:\Users\max_b\Documents\GitHub\snakes_on_a_plane\project\website" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.CharReader">
     <configuration name="CharReader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="snakes_on_a_plane" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -165,9 +159,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.CharReader" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.admin" />
-        <item itemvalue="Python.CharReader" />
         <item itemvalue="Python.Statistics" />
         <item itemvalue="Python.model_seat_fill" />
       </list>
@@ -343,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672852998829</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="BugFixes, not complete yet">
+      <created>1672880716399</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1672880716399</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -365,6 +366,7 @@
     <MESSAGE value="Unified Model_Seat_Fill and CharReader to CharReader, also simplified the function" />
     <MESSAGE value="Function for Statistic Text File Added." />
     <MESSAGE value="Statistics edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="Statistics edited" />
+    <MESSAGE value="BugFixes, not complete yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="BugFixes, not complete yet" />
   </component>
 </project>
