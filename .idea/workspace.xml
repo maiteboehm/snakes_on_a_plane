@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Function for Statistic Text File Added." />
+    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="BugFixes, not complete yet">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/Output_Data/Statistics.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project/Output_Data/Statistics.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/project/instance/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/website/Statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/Statistics.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,13 +34,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Mai-M/Documents/Universität/Chemie/Master/WiSe22_23/Python/project/snakes_on_a_plane/project"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mai-M/Documents/Universität/Chemie/Master/WiSe22_23/Python/project/snakes_on_a_plane&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\max_b\Desktop" />
@@ -114,9 +120,10 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\max_b\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/main.py" />
@@ -149,11 +156,18 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.CharReader" />
+      <item itemvalue="Python.Statistics" />
+      <item itemvalue="Python.admin" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.model_seat_fill" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.admin" />
         <item itemvalue="Python.CharReader" />
+        <item itemvalue="Python.admin" />
         <item itemvalue="Python.Statistics" />
         <item itemvalue="Python.model_seat_fill" />
       </list>
@@ -329,7 +343,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672852998829</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="BugFixes, not complete yet">
+      <created>1672880716399</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1672880716399</updated>
+    </task>
+    <task id="LOCAL-00025" summary="BugFixes, not complete yet">
+      <created>1672909280859</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1672909280860</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -351,6 +379,7 @@
     <MESSAGE value="Unified Model_Seat_Fill and CharReader to CharReader, also simplified the function" />
     <MESSAGE value="Function for Statistic Text File Added." />
     <MESSAGE value="Statistics edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="Statistics edited" />
+    <MESSAGE value="BugFixes, not complete yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="BugFixes, not complete yet" />
   </component>
 </project>

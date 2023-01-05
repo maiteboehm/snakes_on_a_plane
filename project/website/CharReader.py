@@ -13,18 +13,16 @@ def dictionary_creater(filepath):
     Returns dictionary with flight number as key and list of rows of the specific flight(list of of lists) as value.
     """
     filename_liste = []
-#    Exception_Liste = []
     filename_dictionary = {
 
     }
     flight_list_number = 1
-
     for filename in os.listdir(filepath):
         filename_input = []
 
         if filename.endswith('.txt'):
             filename_liste.append(filename)
-            input = open(ChartIn_Path+str(filename), mode='r')
+            input = open(filepath+str(filename), mode='r')
 
             for index, line in enumerate(input):
                 line.lstrip()
@@ -38,6 +36,16 @@ def dictionary_creater(filepath):
                     elif letter != '\t' and letter != '\n':
                         line_liste.append(letter)
 
+                tmp_list = []
+
+                if line[0] == '1' and index == 0:
+                    alphabet = list(string.ascii_uppercase)
+
+                    for i in range(len(line_liste)):
+
+                        tmp_list.append(alphabet[i])
+                    filename_input.append(tmp_list)
+
                 filename_input.append(line_liste)
 
         filename_dictionary.update({flight_list_number: filename_input})
@@ -45,6 +53,7 @@ def dictionary_creater(filepath):
         resorted_dictionary = filename_dictionary
     return resorted_dictionary
 
+# print(dictionary_creater(ChartIn_Path))
 
 def seat_identifier(reihe):
     """Seat_Identifier serves as Function to define the different types of seats that are present in the Flight.
@@ -129,7 +138,7 @@ def model_seat_filler(Dictionary):
         if seat_unique_check:
             continue
         else:
-            new_flight_list = Seat(flight_list=flight_list[i], seat_row=seat_row_list[i], 
+            new_flight_list = Seat(flight=flight_list[i], seat_row=seat_row_list[i],
                                    seat_column=seat_column_list[i], seat_status=seat_status[i], 
                                    seat_type=seat_type_list[i], seat_unique=seat_unique)
             db.session.add(new_flight_list)
