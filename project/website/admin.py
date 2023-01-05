@@ -133,4 +133,4 @@ def refresh_statistics():
     admin = admin_user_checker(current_user)
     if admin:
         database_reader(Seat)
-        return redirect('/admin-area/seats')
+        return redirect('/admin-area/statistics')

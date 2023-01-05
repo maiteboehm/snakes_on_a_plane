@@ -12,7 +12,7 @@
 	<div class="container" align="center">
 		{% for seat in element %}
 		{% if seat.seat_column == 'A' %}
-		<span class="btn btn-light inactive">{{seat.seat_row}}</span>
+		<span class="btn btn-light active disabled" >{{seat.seat_row}}</span>
 		{% endif %}
 
 		<!-- checking for aisle seat -->
