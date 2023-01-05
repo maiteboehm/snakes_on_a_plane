@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="BugFixes, not complete yet">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/Output_Data/Statistics.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project/Output_Data/Statistics.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/project/instance/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/website/Statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/Statistics.py" afterDir="false" />
-    </list>
+    <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="Fixed Bugs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -357,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672909280860</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Fixed Bugs">
+      <created>1672951899602</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1672951899602</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -380,6 +381,7 @@
     <MESSAGE value="Function for Statistic Text File Added." />
     <MESSAGE value="Statistics edited" />
     <MESSAGE value="BugFixes, not complete yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="BugFixes, not complete yet" />
+    <MESSAGE value="Fixed Bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Bugs" />
   </component>
 </project>
