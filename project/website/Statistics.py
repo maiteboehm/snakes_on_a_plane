@@ -30,7 +30,6 @@ def database_reader(class_variable):
                 version_counter_liste.append(letter)
                 version_counter = ''.join(version_counter_liste)
                 version_counter = int(version_counter)
-        print(lines[version_counter])
         for index, letter in enumerate(lines[version_counter]):
             if letter == ' ':
                 break
@@ -39,7 +38,7 @@ def database_reader(class_variable):
                 last_availability_entry.append(letter)
 
         last_availability_entry_liste.append(''.join(last_availability_entry))
-        print(last_availability_entry_liste, occupation_all_seats)
+        #print(last_availability_entry_liste, occupation_all_seats)
         if float(last_availability_entry_liste[0]) == float(occupation_all_seats):
             print('File not updated, everything up2date')
             return filename_dictionary
@@ -48,9 +47,14 @@ def database_reader(class_variable):
             output = open(filename_dictionary, 'w')
             lines[0] = lines[0].replace(str(version_counter),str(version_counter + 1))
             lines.insert(version_counter+1, str(occupation_all_seats) + '    ' + str(available_all_seats) + '\n')
-            for items in lines:
+            print(lines)
+            for items in lines[0:(version_counter+2)]:
                 output.write(str(items))
                 print(items)
+            for i in range(len(occupied_types)):
+                output.write(str(occupied_types[i]) + '    ' + str(available_types[i]) + '\n')
+            output.close()
+
     else:
         output = open(filename_dictionary, 'a')
         output.write('All_Seat_Occupation All_Seat_Availability ' + str(1) +

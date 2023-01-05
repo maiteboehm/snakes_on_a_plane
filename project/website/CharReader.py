@@ -3,9 +3,9 @@ import string
 from .models import Seat
 from . import db
 
-#Path = os.path.abspath(os.curdir)
-#Project_Path = os.path.dirname(Path)
-#ChartIn_Path = Project_Path + r'\Input_Data\\'
+Path = os.path.abspath(os.curdir)
+# Project_Path = os.path.dirname(Path)
+ChartIn_Path = Path + r'\Input_Data\\'
 
 
 def dictionary_creater(filepath):
@@ -22,7 +22,7 @@ def dictionary_creater(filepath):
 
         if filename.endswith('.txt'):
             filename_liste.append(filename)
-            input = open(ChartIn_Path+str(filename), mode='r')
+            input = open(filepath+str(filename), mode='r')
 
             for index, line in enumerate(input):
                 line.lstrip()
@@ -138,7 +138,7 @@ def model_seat_filler(Dictionary):
         if seat_unique_check:
             continue
         else:
-            new_flight_list = Seat(flight_list=flight_list[i], seat_row=seat_row_list[i], 
+            new_flight_list = Seat(flight=flight_list[i], seat_row=seat_row_list[i],
                                    seat_column=seat_column_list[i], seat_status=seat_status[i], 
                                    seat_type=seat_type_list[i], seat_unique=seat_unique)
             db.session.add(new_flight_list)

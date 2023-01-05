@@ -1,6 +1,7 @@
-All_Seat_Occupation All_Seat_Availability 1
+All_Seat_Occupation All_Seat_Availability 3
 9.109311740890687    90.89068825910931
-Occupied_Seats Available Seats
+9.51417004048583    90.48582995951418
+9.919028340080972    90.08097165991903
 <Seat 1>    <Seat 4>
 <Seat 2>    <Seat 5>
 <Seat 3>    <Seat 6>
@@ -46,3 +47,7 @@ Occupied_Seats Available Seats
 <Seat 125>    <Seat 51>
 <Seat 128>    <Seat 52>
 <Seat 131>    <Seat 53>
+<Seat 144>    <Seat 54>
+<Seat 155>    <Seat 55>
+<Seat 443>    <Seat 56>
+<Seat 448>    <Seat 57>

@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aff0e9a7-a9a5-4e9b-a40c-71833f67b16a" name="Changes" comment="BugFixes, not complete yet">
-      <change afterPath="$PROJECT_DIR$/project/Output_Data/Statistics.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/Output_Data/Statistics.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project/Output_Data/Statistics.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/project/instance/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/website/CharReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/CharReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/website/Statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/website/Statistics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +49,7 @@
       <recent name="C:\Users\max_b\Documents\GitHub\snakes_on_a_plane\project\website" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.CharReader">
+  <component name="RunManager" selected="Python.main">
     <configuration name="CharReader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="snakes_on_a_plane" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,8 +165,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.CharReader" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.CharReader" />
         <item itemvalue="Python.admin" />
         <item itemvalue="Python.Statistics" />
         <item itemvalue="Python.model_seat_fill" />
