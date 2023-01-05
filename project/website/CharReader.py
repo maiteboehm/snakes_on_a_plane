@@ -55,6 +55,7 @@ def dictionary_creater(filepath):
 
 # print(dictionary_creater(ChartIn_Path))
 
+
 def seat_identifier(reihe):
     """Seat_Identifier serves as Function to define the different types of seats that are present in the Flight.
     The Function takes a row as argument and returns lists that contain the seats in capital letters according to their
