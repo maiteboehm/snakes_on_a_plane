@@ -35,7 +35,7 @@ def flight(flights):
     seat_to_render = Seat.query.filter_by(flight=flights)
     row_number = Seat.query.filter_by(flight=flights, seat_column='A').all()
     list_of_rows = []
-    for i in range(len(row_number)):
+    for i in range(len(row_number)+1):
         row = Seat.query.filter_by(flight=flights, seat_row=i)
         list_of_rows.append(row)
 
