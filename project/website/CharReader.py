@@ -1,11 +1,11 @@
 import os
 import string
-from .models import Seat
-from . import db
+#from .models import Seat
+#from . import db
 
-# Path = os.path.abspath(os.curdir)
-# Project_Path = os.path.dirname(Path)
-# ChartIn_Path = Project_Path + r'\Input_Data\\'
+Path = os.path.abspath(os.curdir)
+Project_Path = os.path.dirname(Path)
+ChartIn_Path = Project_Path + r'\Input_Data\\'
 
 
 def dictionary_creater(filepath):
@@ -18,7 +18,7 @@ def dictionary_creater(filepath):
 
     }
     flight_list_number = 1
-
+    alphabet = list(string.ascii_uppercase)
     for filename in os.listdir(filepath):
         filename_input = []
 
@@ -37,14 +37,21 @@ def dictionary_creater(filepath):
 
                     elif letter != '\t' and letter != '\n':
                         line_liste.append(letter)
+                tmp_list = []
+                if line[0] == '1' and index == 0:
+                    alphabet = list(string.ascii_uppercase)
+                    for i in range(len(line_liste)):
+                        tmp_list.append(alphabet[i])
+                    filename_input.append(tmp_list)
 
                 filename_input.append(line_liste)
-
+        print(len(filename_input))
         filename_dictionary.update({flight_list_number: filename_input})
         flight_list_number += 1
         resorted_dictionary = filename_dictionary
     return resorted_dictionary
 
+print(dictionary_creater(ChartIn_Path))
 
 def seat_identifier(reihe):
     """Seat_Identifier serves as Function to define the different types of seats that are present in the Flight.
