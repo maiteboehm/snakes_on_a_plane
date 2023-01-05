@@ -155,11 +155,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.admin" />
       <item itemvalue="Python.CharReader" />
+      <item itemvalue="Python.Statistics" />
+      <item itemvalue="Python.admin" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.model_seat_fill" />
-      <item itemvalue="Python.Statistics" />
     </list>
     <recent_temporary>
       <list>
