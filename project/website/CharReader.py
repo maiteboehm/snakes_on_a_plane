@@ -48,7 +48,7 @@ def dictionary_creater(filepath):
 
                 filename_input.append(line_liste)
 
-        filename_dictionary.update({flight_list_number: filename_input})
+        filename_dictionary.update({flight_list_number: filename_input[1:]})
         flight_list_number += 1
         resorted_dictionary = filename_dictionary
     return resorted_dictionary
