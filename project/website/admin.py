@@ -11,15 +11,6 @@ import os
 admins = Blueprint('admins', __name__)
 
 
-@admins.route('/', methods=['GET'])
-@login_required
-def admin_home():
-    """Creates the home page of the admin-area."""
-    admin = admin_user_checker(current_user)
-    if admin:
-        return render_template('admin_home.html', user=current_user)
-
-
 @admins.route('/user', methods=['GET', 'POST'])
 @login_required
 def admin_user():
@@ -124,7 +115,27 @@ def admin_statistics():
     """Creates a statistic page for the admin."""
     admin = admin_user_checker(current_user)
     if admin:
-        return render_template('admin_statistics.html', user=current_user)
+        flights = Seat.query.filter_by(seat_row='1', seat_column='A').all()
+        free_seat_in_flight = len(Seat.query.filter_by(seat_status='True').all())
+        occupied_seat_in_flight = len(Seat.query.filter_by(seat_status='False').all())
+        values = [free_seat_in_flight,occupied_seat_in_flight]
+        labels = ['Free seats','Occupied seats']
+        colors = ["#0000FF", "#FF0000"]
+        return render_template('admin_statistics.html', user=current_user, flights=flights, set=zip(values, labels, colors))
+
+@admins.route('/statistic/<int:flight>', methods=['GET', 'POST'])
+@login_required
+def admin_flight_statistic(flight):
+    """Creates a statistic page for the admin."""
+    admin = admin_user_checker(current_user)
+    if admin:
+        flights = Seat.query.filter_by(seat_row='1', seat_column='A').all()
+        free_seat_in_flight = len(Seat.query.filter_by(seat_flight=flight, seat_status='True').all())
+        occupied_seat_in_flight = len(Seat.query.filter_by(seat_flight=flight, seat_status='False').all())
+        values = [free_seat_in_flight,occupied_seat_in_flight]
+        labels = ['Free seats','Occupied seats']
+        colors = ["#0000FF", "#FF0000"]
+        return render_template('admin_statistic.html', user=current_user, flights=flights, flight=flight, set=zip(values, labels, colors))
 
 
 @admins.route('/refresh-statistics', methods=['Get'])

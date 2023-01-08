@@ -2,7 +2,7 @@
 {% block content %}
 <form action="/admin-area/seats/update-seats/{{seat_to_update.id}}" method="POST">
   <h3 align="center">Update Seat </h3>
-  <h4 align="center">Flight: {{seat_to_update.flight}} Row: {{seat_to_update.seat_row}} Seat: {{seat_to_update.seat_column}} </h4>
+  <h4 align="center">Flight: {{seat_to_update.seat_flight}} Row: {{seat_to_update.seat_row}} Seat: {{seat_to_update.seat_column}} </h4>
   <div class="form-group">
     <label for="user_id">User_ID ("None" or empty for free seat)</label>
     <input

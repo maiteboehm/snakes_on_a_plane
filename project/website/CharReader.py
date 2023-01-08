@@ -139,7 +139,7 @@ def model_seat_filler(Dictionary):
         if seat_unique_check:
             continue
         else:
-            new_flight_list = Seat(flight=flight_list[i], seat_row=seat_row_list[i],
+            new_flight_list = Seat(seat_flight=flight_list[i], seat_row=seat_row_list[i],
                                    seat_column=seat_column_list[i], seat_status=seat_status[i], 
                                    seat_type=seat_type_list[i], seat_unique=seat_unique)
             db.session.add(new_flight_list)

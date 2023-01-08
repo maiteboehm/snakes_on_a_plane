@@ -32,11 +32,11 @@ def help_page():
 @login_required
 def flight(flights):
     """Creates the page where the seat layout of the previously chosen flight is displayed."""
-    seat_to_render = Seat.query.filter_by(flight=flights)
-    row_number = Seat.query.filter_by(flight=flights, seat_column='A').all()
+    seat_to_render = Seat.query.filter_by(seat_flight=flights)
+    row_number = Seat.query.filter_by(seat_flight=flights, seat_column='A').all()
     list_of_rows = []
     for i in range(len(row_number)+1):
-        row = Seat.query.filter_by(flight=flights, seat_row=i)
+        row = Seat.query.filter_by(seat_flight=flights, seat_row=i)
         list_of_rows.append(row)
 
     return render_template('seats.html', user=current_user, seat_to_render=seat_to_render, list_of_rows=list_of_rows)

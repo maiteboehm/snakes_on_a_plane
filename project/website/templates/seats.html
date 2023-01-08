@@ -18,7 +18,7 @@
 		<!-- checking for aisle seat -->
 		{% if seat.seat_type == 'Aisle_Left' %}
 		{% if seat.seat_status == 'True' %}
-		<a type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#ReserveModal{{seat.id}}" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
+		<a type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#ReserveModal{{seat.id}}" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.seat_flight)}}">{{seat.seat_column}}</a>
 
 		<!-- Begin Modal -->
 		<div class="modal fade" id="ReserveModal{{seat.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -35,7 +35,7 @@
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        				<a type="button" class="btn btn-primary" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}">Reserve seat</a>
+        				<a type="button" class="btn btn-primary" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.seat_flight)}}">Reserve seat</a>
       				</div>
     			</div>
   			</div>
@@ -44,7 +44,7 @@
 
 		<button type="button" class="btn btn-outline-light" disabled></button>
 		{% elif seat.user_id == current_user.id%}
-		<a type="button" class="btn btn-success btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#CancelModal{{seat.id}}" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
+		<a type="button" class="btn btn-success btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#CancelModal{{seat.id}}" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.seat_flight)}}">{{seat.seat_column}}</a>
 
 		<!-- Begin Cancel Modal -->
 		<div class="modal fade" id="CancelModal{{seat.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -61,7 +61,7 @@
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        				<a type="button" class="btn btn-primary" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.flight)}}">Cancel seat</a>
+        				<a type="button" class="btn btn-primary" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.seat_flight)}}">Cancel seat</a>
       				</div>
     			</div>
   			</div>
@@ -76,7 +76,7 @@
 
 		<!-- checking for other requirements -->
 		{% elif seat.seat_status == 'True' %}
-		<a type="button" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#ReserveModal{{seat.id}}">{{seat.seat_column}}</a>
+		<a type="button" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.seat_flight)}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#ReserveModal{{seat.id}}">{{seat.seat_column}}</a>
 
 		<!-- Begin Reservation Modal -->
 		<div class="modal fade" id="ReserveModal{{seat.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,7 +93,7 @@
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        				<a type="button" class="btn btn-primary" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.flight)}}">Reserve seat</a>
+        				<a type="button" class="btn btn-primary" href="{{url_for('views.booking_seat', id=seat.id, flights=seat.seat_flight)}}">Reserve seat</a>
       				</div>
     			</div>
   			</div>
@@ -101,7 +101,7 @@
 		<!-- End Reservation Modal -->
 
 		{% elif seat.user_id == current_user.id%}
-		<a type="button" class="btn btn-success btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#CancelModal{{seat.id}}" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.flight)}}">{{seat.seat_column}}</a>
+		<a type="button" class="btn btn-success btn-lg active" role="button" aria-pressed="true" data-toggle="modal" data-target="#CancelModal{{seat.id}}" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.seat_flight)}}">{{seat.seat_column}}</a>
 
 		<!-- Begin Cancel Modal -->
 		<div class="modal fade" id="CancelModal{{seat.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -118,7 +118,7 @@
       				</div>
       				<div class="modal-footer">
         				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        				<a type="button" class="btn btn-primary" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.flight)}}">Cancel seat</a>
+        				<a type="button" class="btn btn-primary" href="{{url_for('views.cancel_seat', id=seat.id, flights=seat.seat_flight)}}">Cancel seat</a>
       				</div>
     			</div>
   			</div>

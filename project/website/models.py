@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
 
 class Seat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    flight = db.Column(db.String(10))
+    seat_flight = db.Column(db.String(10))
     seat_row = db.Column(db.String(5))
     seat_column = db.Column(db.String(5))
     seat_status = db.Column(db.String(10))
