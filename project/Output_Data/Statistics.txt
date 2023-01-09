@@ -1,4 +1,4 @@
-All_Seat_Occupation All_Seat_Availability 7
+All_Seat_Occupation All_Seat_Availability 8
 9.109311740890687    90.89068825910931
 9.51417004048583    90.48582995951418
 9.919028340080972    90.08097165991903
@@ -6,44 +6,43 @@ All_Seat_Occupation All_Seat_Availability 7
 7.415254237288136    92.58474576271186
 0.0    100.0
 7.203389830508475    92.79661016949153
-<Seat 63>    <Seat 1>
-<Seat 64>    <Seat 2>
-<Seat 66>    <Seat 3>
-<Seat 67>    <Seat 4>
-<Seat 68>    <Seat 5>
-<Seat 70>    <Seat 6>
-<Seat 71>    <Seat 7>
-<Seat 73>    <Seat 8>
-<Seat 75>    <Seat 9>
-<Seat 77>    <Seat 10>
-<Seat 78>    <Seat 11>
-<Seat 80>    <Seat 12>
-<Seat 82>    <Seat 13>
-<Seat 83>    <Seat 14>
-<Seat 84>    <Seat 15>
-<Seat 85>    <Seat 16>
-<Seat 87>    <Seat 17>
-<Seat 88>    <Seat 18>
-<Seat 91>    <Seat 19>
-<Seat 93>    <Seat 20>
-<Seat 95>    <Seat 21>
-<Seat 96>    <Seat 22>
-<Seat 98>    <Seat 23>
-<Seat 99>    <Seat 24>
-<Seat 104>    <Seat 25>
-<Seat 105>    <Seat 26>
-<Seat 106>    <Seat 27>
-<Seat 107>    <Seat 28>
-<Seat 108>    <Seat 29>
-<Seat 109>    <Seat 30>
-<Seat 112>    <Seat 31>
-<Seat 113>    <Seat 32>
-<Seat 116>    <Seat 33>
-<Seat 119>    <Seat 34>
-              <Seat 36>
-              <Seat 37>
-              <Seat 38>
-              <Seat 39>
+7.627118644067797    92.37288135593221
+<Seat 1>    <Seat 3>
+<Seat 2>    <Seat 4>
+<Seat 63>    <Seat 5>
+<Seat 64>    <Seat 6>
+<Seat 66>    <Seat 7>
+<Seat 67>    <Seat 8>
+<Seat 68>    <Seat 9>
+<Seat 70>    <Seat 10>
+<Seat 71>    <Seat 11>
+<Seat 73>    <Seat 12>
+<Seat 75>    <Seat 13>
+<Seat 77>    <Seat 14>
+<Seat 78>    <Seat 15>
+<Seat 80>    <Seat 16>
+<Seat 82>    <Seat 17>
+<Seat 83>    <Seat 18>
+<Seat 84>    <Seat 19>
+<Seat 85>    <Seat 20>
+<Seat 87>    <Seat 21>
+<Seat 88>    <Seat 22>
+<Seat 91>    <Seat 23>
+<Seat 93>    <Seat 24>
+<Seat 95>    <Seat 25>
+<Seat 96>    <Seat 26>
+<Seat 98>    <Seat 27>
+<Seat 99>    <Seat 28>
+<Seat 104>    <Seat 29>
+<Seat 105>    <Seat 30>
+<Seat 106>    <Seat 31>
+<Seat 107>    <Seat 32>
+<Seat 108>    <Seat 33>
+<Seat 109>    <Seat 34>
+<Seat 112>    <Seat 35>
+<Seat 113>    <Seat 36>
+<Seat 116>    <Seat 37>
+<Seat 119>    <Seat 38>
               <Seat 40>
               <Seat 41>
               <Seat 42>
