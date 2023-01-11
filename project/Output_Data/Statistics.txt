@@ -1,4 +1,4 @@
-All_Seat_Occupation All_Seat_Availability 8
+All_Seat_Occupation All_Seat_Availability 10
 9.109311740890687    90.89068825910931
 9.51417004048583    90.48582995951418
 9.919028340080972    90.08097165991903
@@ -7,6 +7,8 @@ All_Seat_Occupation All_Seat_Availability 8
 0.0    100.0
 7.203389830508475    92.79661016949153
 7.627118644067797    92.37288135593221
+7.838983050847458    92.16101694915254
+8.05084745762712    91.94915254237289
 <Seat 1>    <Seat 3>
 <Seat 2>    <Seat 4>
 <Seat 63>    <Seat 5>
@@ -43,8 +45,8 @@ All_Seat_Occupation All_Seat_Availability 8
 <Seat 113>    <Seat 36>
 <Seat 116>    <Seat 37>
 <Seat 119>    <Seat 38>
-              <Seat 40>
-              <Seat 41>
+<Seat 431>    <Seat 39>
+<Seat 432>    <Seat 40>
               <Seat 42>
               <Seat 43>
               <Seat 44>
@@ -400,8 +402,6 @@ All_Seat_Occupation All_Seat_Availability 8
               <Seat 428>
               <Seat 429>
               <Seat 430>
-              <Seat 431>
-              <Seat 432>
               <Seat 433>
               <Seat 434>
               <Seat 435>
