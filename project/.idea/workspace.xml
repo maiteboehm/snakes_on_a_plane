@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e438fd09-6aef-4c0d-9ce4-bf88ab9b53b7" name="Changes" comment="UpdatingSeats in dB">
+      <change afterPath="$PROJECT_DIR$/../assignment/Marcel_Sommer/testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2IlgFCTNa5uG8OmTOe4HD0o0Xec" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marcel Sommer/Documents/GitHub/snakes_on_a_plane/project/Input_Data&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Marcel Sommer\Documents\GitHub\snakes_on_a_plane\project\Input_Data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/website" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/website/__init__.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.__init__" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e438fd09-6aef-4c0d-9ce4-bf88ab9b53b7" name="Changes" comment="" />
+      <created>1670761480127</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670761480127</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Update Databases">
+      <created>1670855687218</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670855687218</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add bookingsystem.html &#10;let user chose witch flight they want">
+      <created>1671109341465</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671109341465</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Updating bookingsystem.html &#10;let user chose witch flight they want">
+      <created>1671614216070</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671614216070</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Updating bookingsystem.html">
+      <created>1671626852584</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671626852585</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Creating Admin Area for better handling">
+      <created>1671992516820</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671992516820</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updating Admin Area">
+      <created>1671992603522</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671992603522</updated>
+    </task>
+    <task id="LOCAL-00007" summary="small Updates">
+      <created>1671994098363</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671994098363</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updating Admin Area">
+      <created>1672011471644</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672011471644</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updating Admin Area">
+      <created>1672074052717</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672074052717</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Seatsdatabase">
+      <created>1672155810524</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672155810524</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Updating Admin Area">
+      <created>1672228732719</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672228732719</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Updating AdminArea Updating and deleting of users">
+      <created>1672231268312</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1672231268312</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Updating AdminArea Updating and deleting of users">
+      <created>1672231553116</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672231553116</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Updating AdminArea Updating and deleting of users">
+      <created>1672231569194</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672231569194</updated>
+    </task>
+    <task id="LOCAL-00015" summary="small updates in init">
+      <created>1672231685993</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1672231685993</updated>
+    </task>
+    <task id="LOCAL-00016" summary="updating admin-area  with seat site">
+      <created>1672235318156</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1672235318156</updated>
+    </task>
+    <task id="LOCAL-00017" summary="updating admin-area  with seat site">
+      <created>1672235331106</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1672235331106</updated>
+    </task>
+    <task id="LOCAL-00018" summary="updating admin-area with flights">
+      <created>1672318285698</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672318285698</updated>
+    </task>
+    <task id="LOCAL-00019" summary="updating admin-area with flights">
+      <created>1672318305741</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672318305741</updated>
+    </task>
+    <task id="LOCAL-00020" summary="updating admin-area with flights">
+      <created>1672318361564</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1672318361564</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Flightdatabase is reaaaaaaddddyyy!!!!">
+      <created>1672319725282</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1672319725282</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Flightdatabase is reaaaaaaddddyyy!!!!">
+      <created>1672319755548</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1672319755548</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Flightdatabase is reaaaaaaddddyyy!!!!">
+      <created>1672323019047</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1672323019047</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Small updates and first ideas for seat overview for customer">
+      <created>1672343581796</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1672343581796</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Small updaets and Updating dB">
+      <created>1672436346282</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1672436346282</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Small updaets and Updating dB">
+      <created>1672439926373</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1672439926373</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Small updaets and Updating dB">
+      <created>1672441305982</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1672441305982</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Small updaets and Updating dB">
+      <created>1672441352402</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1672441352402</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Updating Seats finished">
+      <created>1672444486583</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1672444486583</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Updating Bookingsytem">
+      <created>1672447117897</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1672447117897</updated>
+    </task>
+    <task id="LOCAL-00031" summary="UpdatingSeats for AdminArea and small other changes">
+      <created>1672742409081</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1672742409081</updated>
+    </task>
+    <task id="LOCAL-00032" summary="UpdatingSeats for AdminArea and small other changes">
+      <created>1672742435456</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1672742435456</updated>
+    </task>
+    <task id="LOCAL-00033" summary="UpdatingSeats for AdminArea and small other changes">
+      <created>1672742806052</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1672742806052</updated>
+    </task>
+    <task id="LOCAL-00034" summary="UpdatingSeats for AdminArea and small other changes">
+      <created>1672750285332</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1672750285332</updated>
+    </task>
+    <task id="LOCAL-00035" summary="UpdatingSeats for AdminArea and small other changes">
+      <created>1672751373138</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1672751373138</updated>
+    </task>
+    <task id="LOCAL-00036" summary="UpdatingSeats in dB">
+      <created>1672825389298</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1672825389298</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update Databases" />
+    <MESSAGE value="Add bookingsystem.html &#10;let user chose witch flight they want" />
+    <MESSAGE value="Updating bookingsystem.html &#10;let user chose witch flight they want" />
+    <MESSAGE value="Updating bookingsystem.html" />
+    <MESSAGE value="Creating Admin Area for better handling" />
+    <MESSAGE value="small Updates" />
+    <MESSAGE value="Seatsdatabase" />
+    <MESSAGE value="Updating Admin Area" />
+    <MESSAGE value="Updating AdminArea Updating and deleting of users" />
+    <MESSAGE value="small updates in init" />
+    <MESSAGE value="updating admin-area  with seat site" />
+    <MESSAGE value="updating admin-area with flights" />
+    <MESSAGE value="Flightdatabase is reaaaaaaddddyyy!!!!" />
+    <MESSAGE value="Small updates and first ideas for seat overview for customer" />
+    <MESSAGE value="Small updaets and Updating dB" />
+    <MESSAGE value="Updating Seats finished" />
+    <MESSAGE value="Updating Bookingsytem" />
+    <MESSAGE value="UpdatingSeats for AdminArea and small other changes" />
+    <MESSAGE value="UpdatingSeats in dB" />
+    <option name="LAST_COMMIT_MESSAGE" value="UpdatingSeats in dB" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/website/models.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
