@@ -48,7 +48,7 @@ a reserved seat. In the latter case, the seat will become available again.
 ***
 You can clone this repository using the following shell command.
 ```
-$ git clone <https://github.com/maiteboehm/snakes_on_a_plane>
+$ git clone <https://github.com/maiteboehm/snakes_on_a_plane.git>
 ```
 ## Requirements
 ***
