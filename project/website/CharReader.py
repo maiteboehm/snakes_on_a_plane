@@ -63,29 +63,29 @@ def seat_identifier(reihe):
     """
     if len(reihe) == 10:
         aisle_list_left = ['C', 'G']
-        aisle_liste_right = ['D', 'H']
+        aisle_list_right = ['D', 'H']
         window_list = ['A', 'J']
         normal_list = ['B', 'E', 'F', 'I']
 
     elif len(reihe) == 8:
         aisle_list_left = ['C', 'E']
-        aisle_liste_right = ['D', 'F']
+        aisle_list_right = ['D', 'F']
         window_list = ['A', 'H']
         normal_list = ['B', 'G']
 
     elif len(reihe) == 6:
         aisle_list_left = ['C']
-        aisle_liste_right = ['D']
+        aisle_list_right = ['D']
         window_list = ['A', 'F']
         normal_list = ['B', 'E']
 
     elif len(reihe) == 4:
         aisle_list_left = ['B']
-        aisle_liste_right = ['C']
+        aisle_list_right = ['C']
         window_list = ['A', 'D']
         normal_list = []
 
-    return aisle_list_left, aisle_liste_right, window_list, normal_list
+    return aisle_list_left, aisle_list_right, window_list, normal_list
 
 
 def model_seat_filler(Dictionary):
