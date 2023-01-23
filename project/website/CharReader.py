@@ -12,6 +12,7 @@ def dictionary_creater(filepath):
     """ Creates dictionary from text files in filepath with the function argument being the filepath of files.
     Returns dictionary with flight number as key and list of rows of the specific flight(list of of lists) as value.
     """
+    alphabet = list(string.ascii_uppercase)
     filename_liste = []
     filename_dictionary = {
 
@@ -30,16 +31,12 @@ def dictionary_creater(filepath):
 
                 for letter in line:
 
-                    if letter.isdigit():
-                        continue
-
-                    elif letter != '\t' and letter != '\n':
+                    if letter in alphabet:
                         line_liste.append(letter)
 
                 tmp_list = []
 
                 if line[0] == '1' and index == 0:
-                    alphabet = list(string.ascii_uppercase)
 
                     for i in range(len(line_liste)):
 
@@ -50,7 +47,8 @@ def dictionary_creater(filepath):
 
         filename_dictionary.update({flight_list_number: filename_input[1:]})
         flight_list_number += 1
-        resorted_dictionary = filename_dictionary
+    resorted_dictionary = filename_dictionary
+
     return resorted_dictionary
 
 # print(dictionary_creater(ChartIn_Path))
@@ -61,6 +59,11 @@ def seat_identifier(reihe):
     The Function takes a row as argument and returns lists that contain the seats in capital letters according to their
     type.
     """
+    aisle_list_left = []
+    aisle_list_right = []
+    window_list = []
+    normal_list = []
+
     if len(reihe) == 10:
         aisle_list_left = ['C', 'G']
         aisle_list_right = ['D', 'H']
@@ -86,7 +89,7 @@ def seat_identifier(reihe):
         normal_list = []
 
     return aisle_list_left, aisle_list_right, window_list, normal_list
-
+# Seat_Dictionary = {1:[['A','B','C','D','E','F'],['A','B','C','D','E','F'],['A','B','C','D','E','F']]}
 
 def model_seat_filler(Dictionary):
     """Function takes the Dictionary as argument and fills the class seat of the Database which is initialized in
@@ -132,18 +135,20 @@ def model_seat_filler(Dictionary):
 
                     elif letter in type_list[3]:
                         seat_type_list.append('Normal')
-
+    #print(len(flight_list), len(seat_row_list), len(seat_column_list), len(seat_status), len(seat_type_list))
     for i in range(len(flight_list)):
+        #print(flight_list[i], seat_type_list[i], seat_column_list[i], seat_row_list[i], seat_status[i])
         seat_unique = str(flight_list[i])+'_'+str(seat_row_list[i])+'_'+str(seat_column_list[i])
         seat_unique_check = Seat.query.filter_by(seat_unique=seat_unique).first()
         if seat_unique_check:
             continue
         else:
             new_flight_list = Seat(seat_flight=flight_list[i], seat_row=seat_row_list[i],
-                                   seat_column=seat_column_list[i], seat_status=seat_status[i], 
+                                   seat_column=seat_column_list[i], seat_status=seat_status[i],
                                    seat_type=seat_type_list[i], seat_unique=seat_unique)
             db.session.add(new_flight_list)
 
     db.session.commit()
 
     return flight_list, seat_row_list, seat_column_list, seat_status, seat_type_list
+# print(model_seat_filler(Seat_Dictionary))
