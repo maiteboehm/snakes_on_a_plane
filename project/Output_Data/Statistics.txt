@@ -1,4 +1,4 @@
-All_Seat_Occupation All_Seat_Availability 10
+All_Seat_Occupation All_Seat_Availability 11
 9.109311740890687    90.89068825910931
 9.51417004048583    90.48582995951418
 9.919028340080972    90.08097165991903
@@ -9,6 +9,7 @@ All_Seat_Occupation All_Seat_Availability 10
 7.627118644067797    92.37288135593221
 7.838983050847458    92.16101694915254
 8.05084745762712    91.94915254237289
+6.83453237410072    93.16546762589928
 <Seat 1>    <Seat 3>
 <Seat 2>    <Seat 4>
 <Seat 63>    <Seat 5>
@@ -442,3 +443,87 @@ All_Seat_Occupation All_Seat_Availability 10
               <Seat 470>
               <Seat 471>
               <Seat 472>
+              <Seat 473>
+              <Seat 474>
+              <Seat 475>
+              <Seat 476>
+              <Seat 477>
+              <Seat 478>
+              <Seat 479>
+              <Seat 480>
+              <Seat 481>
+              <Seat 482>
+              <Seat 483>
+              <Seat 484>
+              <Seat 485>
+              <Seat 486>
+              <Seat 487>
+              <Seat 488>
+              <Seat 489>
+              <Seat 490>
+              <Seat 491>
+              <Seat 492>
+              <Seat 493>
+              <Seat 494>
+              <Seat 495>
+              <Seat 496>
+              <Seat 497>
+              <Seat 498>
+              <Seat 499>
+              <Seat 500>
+              <Seat 501>
+              <Seat 502>
+              <Seat 503>
+              <Seat 504>
+              <Seat 505>
+              <Seat 506>
+              <Seat 507>
+              <Seat 508>
+              <Seat 509>
+              <Seat 510>
+              <Seat 511>
+              <Seat 512>
+              <Seat 513>
+              <Seat 514>
+              <Seat 515>
+              <Seat 516>
+              <Seat 517>
+              <Seat 518>
+              <Seat 519>
+              <Seat 520>
+              <Seat 521>
+              <Seat 522>
+              <Seat 523>
+              <Seat 524>
+              <Seat 525>
+              <Seat 526>
+              <Seat 527>
+              <Seat 528>
+              <Seat 529>
+              <Seat 530>
+              <Seat 531>
+              <Seat 532>
+              <Seat 533>
+              <Seat 534>
+              <Seat 535>
+              <Seat 536>
+              <Seat 537>
+              <Seat 538>
+              <Seat 539>
+              <Seat 540>
+              <Seat 541>
+              <Seat 542>
+              <Seat 543>
+              <Seat 544>
+              <Seat 545>
+              <Seat 546>
+              <Seat 547>
+              <Seat 548>
+              <Seat 549>
+              <Seat 550>
+              <Seat 551>
+              <Seat 552>
+              <Seat 553>
+              <Seat 554>
+              <Seat 555>
+              <Seat 556>
