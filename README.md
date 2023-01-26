@@ -65,6 +65,10 @@ of our project folder.
 ```
 $ python main.py
 ```
+## Task distribution
+| Task | Responsibility |
+|------|----------------|
+
 
 
 
