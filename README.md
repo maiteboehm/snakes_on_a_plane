@@ -75,7 +75,7 @@ $ python main.py
 | Seat Reservation and Cancelation | Maite Böhm |
 | Help Page | Maite Böhm |
 | Input Reader | Maximilian Breitenbach |
-| Statistics | Maximilian Breitenbach, Marcel Sommer |
+| Statistics | Maximilian Breitenbach |
 | Coding Practices | all |
 
 
