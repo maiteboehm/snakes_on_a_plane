@@ -68,6 +68,15 @@ $ python main.py
 ## Task distribution
 | Task | Responsibility |
 |------|----------------|
+| Login, Logout | Marcel Sommer |
+| Admin Area | Marcel Sommer |
+| Admin Rights | Marcel Sommer |
+| Seat Display | Maite Böhm |
+| Seat Reservation and Cancelation | Maite Böhm |
+| Help Page | Maite Böhm |
+| Input Reader | Maximilian Breitenbach |
+| Statistics | Maximilian Breitenbach, Marcel Sommer |
+| Coding Practices | all |
 
 
 
