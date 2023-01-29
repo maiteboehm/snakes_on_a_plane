@@ -18,7 +18,7 @@ def admin_user_checker(current_user):
         return True
     else:
         flash('You need do be an Admin to access!!', category='error')
-        return redirect(url_for('views.home'))
+        return False
 
 
 def new_user_checker(email, first_name, last_name, birth_date, password1, password2):

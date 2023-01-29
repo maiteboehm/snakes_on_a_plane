@@ -25,21 +25,25 @@ def admin_user():
 @login_required
 def update_user(id):
     """Creates the update-user page on which the admin can update the email the name and the role"""
-    user_to_update = User.query.get_or_404(id)
-    if request.method == 'POST':
-        user_to_update.email = request.form['email']
-        user_to_update.first_name = request.form['first_name']
-        user_to_update.last_name = request.form['last_name']
-        user_to_update.role = request.form['role']
-        try:
-            db.session.commit()
-            flash('Account updated!', category='success')
-            return redirect('/admin-area/user')
-        except:
-            flash('Account NOT updated!', category='error')
-            return redirect('/admin-area/user')
+    admin = admin_user_checker(current_user)
+    if admin:
+        user_to_update = User.query.get_or_404(id)
+        if request.method == 'POST':
+            user_to_update.email = request.form['email']
+            user_to_update.first_name = request.form['first_name']
+            user_to_update.last_name = request.form['last_name']
+            user_to_update.role = request.form['role']
+            try:
+                db.session.commit()
+                flash('Account updated!', category='success')
+                return redirect('/admin-area/user')
+            except:
+                flash('Account NOT updated!', category='error')
+                return redirect('/admin-area/user')
+        else:
+            return render_template('admin_update_user.html', user=current_user, user_to_update=user_to_update)
     else:
-        return render_template('admin_update_user.html', user=current_user, user_to_update=user_to_update)
+        return redirect('/')
 
 
 @admins.route('user/delete-user/<int:id>', methods=['POST', 'GET'])
@@ -60,7 +64,8 @@ def delete_user(id):
         except:
             flash('Account NOT deleted!', category='error')
             return redirect('/admin-area/user')
-
+    else:
+        return redirect('/')
 
 @admins.route('/update-flights', methods=['GET', 'POST'])
 @login_required
@@ -73,7 +78,8 @@ def admin_flights():
         flight_dictionary = dictionary_creater(chart_in_path)
         model_seat_filler(flight_dictionary)
         return redirect('/admin-area/seats')
-
+    else:
+        return redirect('/')
 
 @admins.route('/seats', methods=['GET', 'POST'])
 @login_required
@@ -83,7 +89,8 @@ def admin_seats():
     if admin:
         seats = Seat.query.all()
         return render_template('admin_seats.html', user=current_user, seats=seats)
-
+    else:
+        return redirect('/')
 
 @admins.route('/seats/update-seats/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -107,7 +114,8 @@ def update_seat(id):
                 return redirect('/admin-area/seats')
         else:
             return render_template('admin_update_seat.html', user=current_user, seat_to_update=seat_to_update)
-
+    else:
+        return redirect('/')
 
 @admins.route('/statistics', methods=['GET', 'POST'])
 @login_required
@@ -122,7 +130,8 @@ def admin_statistics():
         labels = ['Free seats','Occupied seats']
         colors = ["#0000FF", "#FF0000"]
         return render_template('admin_statistics.html', user=current_user, flights=flights, set=zip(values, labels, colors))
-
+    else:
+        return redirect('/')
 @admins.route('/statistic/<int:flight>', methods=['GET', 'POST'])
 @login_required
 def admin_flight_statistic(flight):
@@ -136,7 +145,8 @@ def admin_flight_statistic(flight):
         labels = ['Free seats','Occupied seats']
         colors = ["#0000FF", "#FF0000"]
         return render_template('admin_statistic.html', user=current_user, flights=flights, flight=flight, set=zip(values, labels, colors))
-
+    else:
+        return redirect('/')
 
 @admins.route('/refresh-statistics', methods=['Get'])
 @login_required
@@ -145,3 +155,5 @@ def refresh_statistics():
     if admin:
         database_reader(Seat)
         return redirect('/admin-area/statistics')
+    else:
+        return redirect('/')
