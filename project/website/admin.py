@@ -67,6 +67,7 @@ def delete_user(id):
     else:
         return redirect('/')
 
+
 @admins.route('/update-flights', methods=['GET', 'POST'])
 @login_required
 def admin_flights():
@@ -81,6 +82,7 @@ def admin_flights():
     else:
         return redirect('/')
 
+
 @admins.route('/seats', methods=['GET', 'POST'])
 @login_required
 def admin_seats():
@@ -91,6 +93,7 @@ def admin_seats():
         return render_template('admin_seats.html', user=current_user, seats=seats)
     else:
         return redirect('/')
+
 
 @admins.route('/seats/update-seats/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -117,6 +120,7 @@ def update_seat(id):
     else:
         return redirect('/')
 
+
 @admins.route('/statistics', methods=['GET', 'POST'])
 @login_required
 def admin_statistics():
@@ -126,12 +130,14 @@ def admin_statistics():
         flights = Seat.query.filter_by(seat_row='1', seat_column='A').all()
         free_seat_in_flight = len(Seat.query.filter_by(seat_status='True').all())
         occupied_seat_in_flight = len(Seat.query.filter_by(seat_status='False').all())
-        values = [free_seat_in_flight,occupied_seat_in_flight]
-        labels = ['Free seats','Occupied seats']
+        values = [free_seat_in_flight, occupied_seat_in_flight]
+        labels = ['Free seats', 'Occupied seats']
         colors = ["#0000FF", "#FF0000"]
         return render_template('admin_statistics.html', user=current_user, flights=flights, set=zip(values, labels, colors))
     else:
         return redirect('/')
+
+
 @admins.route('/statistic/<int:flight>', methods=['GET', 'POST'])
 @login_required
 def admin_flight_statistic(flight):
@@ -141,12 +147,13 @@ def admin_flight_statistic(flight):
         flights = Seat.query.filter_by(seat_row='1', seat_column='A').all()
         free_seat_in_flight = len(Seat.query.filter_by(seat_flight=flight, seat_status='True').all())
         occupied_seat_in_flight = len(Seat.query.filter_by(seat_flight=flight, seat_status='False').all())
-        values = [free_seat_in_flight,occupied_seat_in_flight]
-        labels = ['Free seats','Occupied seats']
+        values = [free_seat_in_flight, occupied_seat_in_flight]
+        labels = ['Free seats', 'Occupied seats']
         colors = ["#0000FF", "#FF0000"]
         return render_template('admin_statistic.html', user=current_user, flights=flights, flight=flight, set=zip(values, labels, colors))
     else:
         return redirect('/')
+
 
 @admins.route('/refresh-statistics', methods=['Get'])
 @login_required

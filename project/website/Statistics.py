@@ -1,5 +1,6 @@
 import os
 
+
 def database_reader(class_variable):
     """Reads the Database which contains the Seat_IDs(Int,prim.key), Flight_Numbers(int), Seats(Capital Letters),
                 Seat_types (defined by the seat_identifier function in Charreader) and Occupation_status(True or False Str)
@@ -40,7 +41,6 @@ def database_reader(class_variable):
                 last_availability_entry.append(letter)
 
         last_availability_entry_liste.append(''.join(last_availability_entry))
-        #print(last_availability_entry_liste, occupation_all_seats)
         if float(last_availability_entry_liste[0]) == float(occupation_all_seats):
             print('File not updated, everything up2date')
             return filename_directory
@@ -53,9 +53,7 @@ def database_reader(class_variable):
             for items in lines[0:(version_counter+2)]:
                 output.write(str(items))
 
-
             for i in range(len(number_types)):
-
                 if i < len(occupied_types) and i < len(available_types):
                     output.write(str(occupied_types[i]) + '    ' + str(available_types[i]) + '\n')
                 elif i >= len(occupied_types) and i >= len(available_types):
@@ -69,7 +67,7 @@ def database_reader(class_variable):
     else:
         output = open(filename_directory, 'a')
         output.write('All_Seat_Occupation All_Seat_Availability ' + 'Version: ' + str(1) +
-                      '\n' + str(occupation_all_seats) + '    ' + str(available_all_seats) + '\n')
+                     '\n' + str(occupation_all_seats) + '    ' + str(available_all_seats) + '\n')
         output.write('Occupied_Seats Available Seats' + '\n')
 
         for i in range(len(number_types)):
@@ -90,4 +88,3 @@ def database_reader(class_variable):
     print('Your file is saved at the following path: ' + out_path)
 
     return occupation_all_seats
-

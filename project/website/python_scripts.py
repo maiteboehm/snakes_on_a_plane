@@ -1,5 +1,5 @@
 from datetime import date
-from flask import flash, redirect, url_for
+from flask import flash
 from datetime import datetime
 from .models import User
 
